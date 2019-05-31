@@ -2,7 +2,7 @@
 	session_start();
 ?>
 <!doctype html>
-<html>
+<html>test
 <head>
     <meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="style/style.css">
