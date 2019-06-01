@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Twój profil</title>
+        <link href="css/register.css" rel="stylesheet" type="text/css">
+    </head>
+<body>
+<div id="panel">
+<form action="../Controlers/register.php" method="POST">
+    <label for="username">Nazwa użytkownika:</label>
+    <input type="text" id="username" name="username" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" required>
+    <label class="passwd" for="password">Hasło: <span style="font-size:14px;">&#9432</span><span class="regextext">* Number<br>* Upper case<br>* Lower case <br>* Min. 8 chars<br>* Special character</span></label> 
+    <input type="password" id="password" name="password" pattern="(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+    <label for="town">Miasto:</label>
+    <input type="text" id="town" name="town" pattern="[A-Za-z0-9 -ęóąśłżźćń]{1,30}" required>
+    <div id="lower">
+    <input type="checkbox"><label class="check" for="checkbox">Zapamiętaj mnie!</label>
+    <input type="submit" value="Confirm">
+</div>
+</body>
+</html>
