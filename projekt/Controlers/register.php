@@ -13,13 +13,12 @@ if($usName == null) //jezeli uzytkownika o takim username nie ma w bazie -> wyko
 {
 $password = password_hash($password, PASSWORD_BCRYPT);
 $sqlQuery="INSERT INTO `uzytkownicy` (`id`, `username`, `password`, `town`) VALUES({$id},'{$username}', '{$password}', '{$town}')";
- 
 $result=$connection->exec($sqlQuery);
 
     try
     {
         if($result>0) echo "kk";
-        echo $id;
+        echo $id;	
     }
     catch(Exception $ex)
     {

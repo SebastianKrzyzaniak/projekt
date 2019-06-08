@@ -23,7 +23,7 @@ if(isset($_SESSION['user'])){
     <label for="username">Nazwa użytkownika:</label>
     <input type="text" id="username" name="username" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" required>
     <label for="password">Hasło:</label>
-    <input type="password" id="password" name="password" pattern="[A-Za-z0-9]{1,20}" required>
+    <input type="password" id="password" name="password" pattern="(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
     <div id="lower">
     <input type="checkbox"><label class="check" for="checkbox">Zapamiętaj mnie!</label>
     <input type="submit" value="Login">
