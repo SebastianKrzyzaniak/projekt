@@ -1,0 +1,23 @@
+    <h2>List</h2>
+      <table class="table table-striped">
+          <thead>
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Town</td>
+            </tr>
+          </thead>
+          <tbody>
+             {% for item in user %}
+                <tr>
+                    <td>{{ item.Id }}</td>
+                    <td>
+                        <a href="show/{{ item.id }}">
+                        {{ item.Username }}
+                        </a>
+                    </td>
+                    <td>{{ item.Town }}</td>
+                </tr>
+             {% endfor %}
+          </tbody>
+      </table>

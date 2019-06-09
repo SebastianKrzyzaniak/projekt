@@ -9,30 +9,8 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-    <h2>List</h2>
-      <table class="table table-striped">
-          <thead>
-            <tr>
-                <td>Id</td>
-                <td>Name</td>
-                <td>Town</td>
-            </tr>
-          </thead>
-          <tbody>
-             {% for item in parametr_monia %}
-                <tr>
-                    <td>{{ item.Id }}</td>
-                    <td>
-                        <a href="show/{{ item.id }}">
-                        {{ item.Username }}
-                        </a>
-                    </td>
-                    <td>{{ item.Town }}</td>
-                </tr>
-             {% endfor %}
-          </tbody>
-      </table>
+    <h1>Hello! ✅</h1>
+     {{ include('../myTemplates/restaurationLst.html.twig') }}
     This friendly message is coming from:dsadaas
     <ul>
         <li>Your controller at <code><a href="{{ 'C:/Program Files/xampp/htdocs/projekt/SymfonyV4/src/Controller/RegisterController.php'|file_link(0) }}">src/Controller/RegisterController.php</a></code></li>

@@ -18,10 +18,7 @@ class RegisterController extends AbstractController
      */
     public function index()
     {
-        return $this->render('register/index.html.twig', [
-            'controller_name' => 'RegisterController',
-            'parametr_monia' => 3,
-        ]);
+        return $this->render('register/index.html.twig');
     }
 
     /**
@@ -37,6 +34,16 @@ class RegisterController extends AbstractController
         ]);
     }
 
+     /**
+     * @Route("/UsersLst", name="UsersLst")
+     */
+    public function UsersLst(UzytkownicyRepository $uzytkownicyRepository)
+    {
+        $user = $uzytkownicyRepository->findAll();
+        return $this->render('register/UsersLst.html.twig', [
+            'user' => $user
+        ]);
+    }
      /**
      * @Route("/show/{id}", name="show")
      */

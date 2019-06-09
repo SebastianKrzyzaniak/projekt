@@ -1,8 +1,10 @@
 {% extends 'template.html.twig' %}
 
 {% block title %}Hello RegisterController!{% endblock %}
+
 {% block stylesheets %}
-{# <style>{% include '/css/index.css' %}</style> #}
+ <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}" />
+{# <style>{% include 'register/css/index.css' %}</style> #}
 {% endblock %}
 {% block body %}
 <div id="panel">
