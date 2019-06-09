@@ -1,0 +1,43 @@
+.header {
+    height: vw(100px);
+    max-height: 100px;
+    min-height: 85px;
+    border-bottom: $color-border 1px solid;
+}
+
+.header__container {
+    height: 100%;
+}
+.header__info {
+    & a {
+        color: $color-primary;
+        font-family: $font-primary;
+
+    }
+
+}
+.header__row {
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+.header__logo {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: vw(203px);
+    max-width: 203px;
+    min-width: 150px;
+    & img {
+        width: 100%;
+    }
+
+}
+.header__registerIcon{
+    width: 25px;
+}
+.header__logoutIcon { 
+    width: 35px;
+}
+

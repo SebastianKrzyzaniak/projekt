@@ -3,19 +3,33 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-<<<<<<< HEAD
-        {% block stylesheets %} 
-            <link rel="stylesheet" type="text/css" href="css/header.css">
-        {% endblock %}
-=======
         {% block stylesheets %}{% endblock %}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
->>>>>>> 9ac979190e39fed7c7b0387ba927690142823d5d
+        <link rel="stylesheet" href="bootstrap/bootstrap.css">
+        <link href='http://fonts.googleapis.com/css?family=Cormorant&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     </head>
     <body>
     <header>
-    <div class="container aaa">
-    
+    <div class="header">
+        <div class="container header__container">
+            <div class="header__row row ">
+                <div class="header__logo">
+                    <img src="img/logo1.png" alt="logo">
+                </div>
+                <div class="header__info">
+                {# // odnosnik do widoku register czy coś  #}
+                    <a class="header__register" href="#">
+                        <p class="-mobileHidden">Zarejestruj się</p>
+                        <img class="header__registerIcon -mobileVisible" src="img/icon_02.svg" alt="Account">
+                    </a>
+                {# // a jak jestesmy zalogowani to : #}
+                    <a class="header__logout" href="#">
+                        <p class="-mobileHidden">Wyloguj się</p>
+                        <img class="header__logoutIcon -mobileVisible" src="img/close1.png" alt="Account">
+                    </a>
+
+                </div>
+            </div>
+        </div>
     </div>
     </header>
     <main>
@@ -23,6 +37,14 @@
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     <footer>
+    <div class="footer">
+        <div class="footer__container">
+            <div class="footer__content">
+
+                <p>Copyright by Restaurate</p>
+            </div>
+        </div>
+    </div>
     </footer>
     </body>
 </html>

@@ -84,3 +84,10 @@
 
   @return mix($color-base, $color, $level * $theme-color-interval);
 }
+
+
+$base-viewport-width: 1700px !default;
+
+@function vw($value, $base: $base-viewport-width) {
+	@return ($value * 100 / $base) * 1vw;
+}

@@ -1,0 +1,85 @@
+// Toggles
+//
+// Used in conjunction with global variables to enable certain theme features.
+
+// Vendor
+@import "vendor/rfs";
+
+// Deprecate
+@import "mixins/deprecate";
+
+// Utilities
+@import "mixins/breakpoints";
+@import "mixins/hover";
+@import "mixins/image";
+@import "mixins/badge";
+@import "mixins/resize";
+@import "mixins/screen-reader";
+@import "mixins/size";
+@import "mixins/reset-text";
+@import "mixins/text-emphasis";
+@import "mixins/text-hide";
+@import "mixins/text-truncate";
+@import "mixins/visibility";
+
+// // Components
+@import "mixins/alert";
+@import "mixins/buttons";
+@import "mixins/caret";
+@import "mixins/pagination";
+@import "mixins/lists";
+@import "mixins/list-group";
+@import "mixins/nav-divider";
+@import "mixins/forms";
+@import "mixins/table-row";
+
+// // Skins
+@import "mixins/background-variant";
+@import "mixins/border-radius";
+@import "mixins/box-shadow";
+@import "mixins/gradients";
+@import "mixins/transition";
+
+// // Layout
+@import "mixins/clearfix";
+@import "mixins/grid-framework";
+@import "mixins/grid";
+@import "mixins/float";
+
+
+@mixin ra($padding_type, $padding_size, $padding_size_min, $padding_size_max, $responsive_options: null) { //Wartosci o ile ma wzrosnać podajemy w dowolnej jednostce
+
+	$responsive-unitless: $padding_size / ($padding_size - $padding_size + 1);
+	$dimension: if(unit($padding_size) == 'vh', 'height', 'width');
+	$min-breakpoint: $padding_size_min / $responsive-unitless * 100;
+
+	@media (max-#{$dimension}: #{$min-breakpoint}) {
+		#{$padding-type}: $padding_size_min;
+	}
+
+	@if $padding_size_max {
+		$max-breakpoint: $padding_size_max / $responsive-unitless * 100;
+
+		@media (min-#{$dimension}: #{$max-breakpoint}) {
+			#{$padding-type}: $padding_size_max;
+		}
+
+		@if $responsive_options{
+			@each $key, $val in $responsive_options{
+				@if unit($val) == '%' { //Gdy w wartosci podamy wartosc procentową
+					$unit_procent:($val / 1%) / 100; // usuwanie znaku %
+					@include mq($key) {
+						#{$padding-type}: (($padding_size_min * $unit_procent) + $padding_size_min) ;
+					}
+				} @else {
+					@include mq($key) {
+						#{$padding-type}: calc(#{$val} + #{$padding_size_min});
+					}
+				}
+
+			}
+		}
+	}
+
+	#{$padding-type}: $padding_size;
+}
