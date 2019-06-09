@@ -4,11 +4,17 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\UzytkownicyRepository;
+use App\Entity\Uzytkownicy;
 
+/**
+     * @Route("/register", name="register")
+     */
 class RegisterController extends AbstractController
 {
-    /**
-     * @Route("/register", name="register")
+    
+   /**
+     * @Route("/", name="register")
      */
     public function index()
     {
@@ -19,24 +25,25 @@ class RegisterController extends AbstractController
     }
 
     /**
-     * @Route("/register/monia", name="monia")
+     * @Route("/create", name="create")
      */
-    public function monia()
+    public function Create(Uzytkownicy $user)
     {
-        return $this->render('register/monia.html.twig', [
-            'controller_name' => 'RegisterController',
-            'parametr_monia' => 'moniaPaczy',
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+        
+        return $this->render('uzytkownicy/', [
         ]);
     }
 
      /**
-     * @Route("/register/sk", name="sk")
+     * @Route("/show/{id}", name="show")
      */
-    public function sk()
+    public function show(Uzytkownicy $user)
     {
-        return $this->render('register/sk.html.twig', [
-            'controller_name' => 'RegisterController',
-            'parametr_monia' => 'sk',
+        return $this->render('register/show.html.twig', [
+            'user' => $user
         ]);
     }
 }
