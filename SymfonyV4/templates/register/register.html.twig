@@ -1,6 +1,6 @@
 {% extends 'template.html.twig' %}
 
-{% block title %}Hello RegisterController!{% endblock %}
+{% block title %}Register{% endblock %}
 
 {% block stylesheets %}
  <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}" />
@@ -8,7 +8,7 @@
 {% endblock %}
 {% block body %}
 <div id="panel">
-<form action="../../src/Controlers/RegisterController.php/Create" method="POST">
+<form action="create" name="uzytkownicy" method="POST">
     <label for="username">Nazwa użytkownika:</label>
     <input type="text" id="username" name="username" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" required>
     <label class="passwd" for="password">Hasło: <span class="passwdInf" style="font-size:14px;">&#9432</span><span class="regextext"> Number<br> Upper case<br> Lower case <br> Min. 8 chars<br> Special character</span></label> 
@@ -21,3 +21,5 @@
     </form>
 </div>
 {% endblock %}
+
+
