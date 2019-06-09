@@ -16,6 +16,7 @@
     <input type="password" id="password" name="password" pattern="(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
     <label for="town">Miasto:</label>
     <input type="text" id="town" name="town" pattern="[A-Za-z0-9 -ęóąśłżźćń]{1,30}" required>
+    <div class="error_form">{% if error is defined %}{{ error }} {% endif %}</div>
     <div id="lower">
     <input type="checkbox"><label class="check" for="checkbox">Zapamiętaj mnie!</label>
     <input type="submit" value="Confirm">

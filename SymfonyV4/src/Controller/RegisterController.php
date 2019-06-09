@@ -8,6 +8,7 @@ use App\Repository\UzytkownicyRepository;
 use App\Entity\Uzytkownicy;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
      * @Route("/register", name="register")
@@ -26,12 +27,25 @@ class RegisterController extends AbstractController
     /**
      * @Route("/create", name="create"), methods={"POST"}
      */
-    public function create(Request $request) : Response
+    public function create(Request $request, UzytkownicyRepository $usersRep) : Response
     { 
+        //TODO: zrobic regexy na textboxy w php- html mozna zmienic
+
+        $username = $_POST['username'];
+        $password =  password_hash($_POST['password'], PASSWORD_BCRYPT);    //hashowanie hasła
+        $town = $_POST['town'];
+
+        if($usersRep->findOneBy(array('username' => $username)) != null)    //jeżeli uzytkownik o takim username juz istnieje
+        {
+            return $this->render('register/register.html.twig',[
+                'error' => 'Użytkownik o takiej nazwie już istnieje'
+            ]);
+        }
+
         $uzytkownicy = new Uzytkownicy();
-        $uzytkownicy->setUsername($_POST['username']);
-        $uzytkownicy->setPassword($_POST['password']);
-        $uzytkownicy->setTown($_POST['town']);
+        $uzytkownicy->setUsername($username);
+        $uzytkownicy->setPassword($password);
+        $uzytkownicy->setTown($town);
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($uzytkownicy);
         $entityManager->flush();
