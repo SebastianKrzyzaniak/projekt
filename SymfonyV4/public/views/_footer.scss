@@ -1,0 +1,13 @@
+footer {
+    height: 100px;
+}
+
+.footer__container, .footer__content, .footer {
+    height: 100%;
+}
+.footer__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: $font-primary;
+}

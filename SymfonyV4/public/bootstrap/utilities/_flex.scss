@@ -49,3 +49,14 @@
     .align-self#{$infix}-stretch  { align-self: stretch !important; }
   }
 }
+
+
+.row,
+.col {
+	display: flex;
+}
+
+.row,
+.row_up {
+	flex-direction: row;
+}

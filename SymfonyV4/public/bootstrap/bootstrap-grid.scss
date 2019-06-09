@@ -1,0 +1,58 @@
+//aa
+/*!
+ * Bootstrap Grid v4.3.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+// ***************************************
+// # LAYOUT
+// ***************************************
+
+$container-width: 1600px;					// layout content width
+$container-min-padding: 20px;			// fixed value for the smallest breakpoint
+$container-max-padding: 50px;			// max value for everything up the biggest breakpoint and dynamic between
+
+
+// ***************************************
+// # MEDIA QUERY BREAKPOINTS
+// ***************************************
+
+$babybear-max:  767px;
+
+$mamabear-min:  768px;
+$mamabear: 		  768px 1199px;
+$mamabear-max: 1199px;
+
+$papabear-min: 1200px;
+$papabear: 		 1200px 1699px;
+$papabear-max: 1699px;
+$papabear-up:  $container-width + $container-max-padding * 2;
+
+
+// ***************************************
+// # CONTAINER SETTINGS
+// ***************************************
+
+.container {
+	padding-right: $container-min-padding;
+	padding-left: $container-min-padding;
+	margin-right: auto !important;
+	margin-left: auto !important;
+	max-width: $container-width + $container-max-padding * 2;
+}
+
+@media ($mamabear-min) {
+	.container {
+		padding-right: 2.9411vw;
+		padding-left: 2.9411vw;
+	}
+}
+
+@media ($papabear-up) {
+	.container {
+		padding-left: $container-max-padding;
+		padding-right: $container-max-padding;
+	}
+}
+
