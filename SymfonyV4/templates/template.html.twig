@@ -3,10 +3,21 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %} 
+            <link rel="stylesheet" type="text/css" href="css/header.css">
+        {% endblock %}
     </head>
     <body>
+    <header>
+    <div class="container aaa">
+    
+    </div>
+    </header>
+    <main>
+    </main>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+    <footer>
+    </footer>
     </body>
 </html>
