@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UzytkownicyRepository;
 use App\Entity\Uzytkownicy;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
      * @Route("/register", name="register")
@@ -14,36 +16,40 @@ class RegisterController extends AbstractController
 {
     
    /**
-     * @Route("/", name="register")
+     * @Route("/", name="register"), methods={"GET"}
      */
     public function index()
     {
-        return $this->render('register/index.html.twig');
+        return $this->render('register/register.html.twig');
     }
 
     /**
-     * @Route("/create", name="create")
+     * @Route("/create", name="create"), methods={"POST"}
      */
-    public function Create(Uzytkownicy $user)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($user);
-        $em->flush();
-        
-        return $this->render('uzytkownicy/', [
-        ]);
+    public function create(Request $request) : Response
+    { 
+        $uzytkownicy = new Uzytkownicy();
+        $uzytkownicy->setUsername($_POST['username']);
+        $uzytkownicy->setPassword($_POST['password']);
+        $uzytkownicy->setTown($_POST['town']);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($uzytkownicy);
+        $entityManager->flush();
+
+        return $this->redirect('http://localhost:8000/home');
     }
 
      /**
-     * @Route("/UsersLst", name="UsersLst")
+     * @Route("/userslst", name="userslst")
      */
-    public function UsersLst(UzytkownicyRepository $uzytkownicyRepository)
+    public function userslst(UzytkownicyRepository $uzytkownicyRepository)
     {
         $user = $uzytkownicyRepository->findAll();
         return $this->render('register/UsersLst.html.twig', [
             'user' => $user
         ]);
     }
+    
      /**
      * @Route("/show/{id}", name="show")
      */
