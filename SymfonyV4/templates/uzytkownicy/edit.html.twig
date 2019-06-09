@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<title>Edit Uzytkownicy</title>
+
+{% block body %}
+    <h1>Edit Uzytkownicy</h1>
+
+    {{ include('uzytkownicy/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('uzytkownicy_index') }}">back to list</a>
+
+    {{ include('uzytkownicy/_delete_form.html.twig') }}
+{% endblock %}

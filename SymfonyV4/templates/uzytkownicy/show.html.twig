@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<title>Uzytkownicy</title>
+
+{% block body %}
+    <h1>Uzytkownicy</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ uzytkownicy.id }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ uzytkownicy.username }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ uzytkownicy.password }}</td>
+            </tr>
+            <tr>
+                <th>Town</th>
+                <td>{{ uzytkownicy.town }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('uzytkownicy_index') }}">back to list</a>
+
+    <a href="{{ path('uzytkownicy_edit', {'id': uzytkownicy.id}) }}">edit</a>
+
+    {{ include('uzytkownicy/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,20 +1,23 @@
-{% extends 'base.html.twig' %}
+{% extends 'template.html.twig' %}
 
 {% block title %}Hello RegisterController!{% endblock %}
 
+{% block stylesheets %}
+ <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}" />
+{# <style>{% include 'register/css/index.css' %}</style> #}
+{% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-    <p>{{ parametr_monia }}<p>
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Program Files/xampp/htdocs/projekt/SymfonyV4/src/Controller/RegisterController.php'|file_link(0) }}">src/Controller/RegisterController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Program Files/xampp/htdocs/projekt/SymfonyV4/templates/register/index.html.twig'|file_link(0) }}">templates/register/index.html.twig</a></code></li>
-    </ul>
+<div id="panel">
+<form action="../../src/Controlers/RegisterController.php/Create" method="POST">
+    <label for="username">Nazwa użytkownika:</label>
+    <input type="text" id="username" name="username" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" required>
+    <label class="passwd" for="password">Hasło: <span class="passwdInf" style="font-size:14px;">&#9432</span><span class="regextext"> Number<br> Upper case<br> Lower case <br> Min. 8 chars<br> Special character</span></label> 
+    <input type="password" id="password" name="password" pattern="(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+    <label for="town">Miasto:</label>
+    <input type="text" id="town" name="town" pattern="[A-Za-z0-9 -ęóąśłżźćń]{1,30}" required>
+    <div id="lower">
+    <input type="checkbox"><label class="check" for="checkbox">Zapamiętaj mnie!</label>
+    <input type="submit" value="Confirm">
+    </form>
 </div>
 {% endblock %}

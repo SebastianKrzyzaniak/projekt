@@ -4,39 +4,53 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\UzytkownicyRepository;
+use App\Entity\Uzytkownicy;
 
+/**
+     * @Route("/register", name="register")
+     */
 class RegisterController extends AbstractController
 {
-    /**
-     * @Route("/register", name="register")
+    
+   /**
+     * @Route("/", name="register")
      */
     public function index()
     {
-        return $this->render('register/index.html.twig', [
-            'controller_name' => 'RegisterController',
-            'parametr_monia' => 3,
-        ]);
+        return $this->render('register/index.html.twig');
     }
 
     /**
-     * @Route("/register/monia", name="monia")
+     * @Route("/create", name="create")
      */
-    public function monia()
+    public function Create(Uzytkownicy $user)
     {
-        return $this->render('register/monia.html.twig', [
-            'controller_name' => 'RegisterController',
-            'parametr_monia' => 'moniaPaczy',
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+        
+        return $this->render('uzytkownicy/', [
         ]);
     }
 
      /**
-     * @Route("/register/sk", name="sk")
+     * @Route("/UsersLst", name="UsersLst")
      */
-    public function sk()
+    public function UsersLst(UzytkownicyRepository $uzytkownicyRepository)
     {
-        return $this->render('register/sk.html.twig', [
-            'controller_name' => 'RegisterController',
-            'parametr_monia' => 'sk',
+        $user = $uzytkownicyRepository->findAll();
+        return $this->render('register/UsersLst.html.twig', [
+            'user' => $user
+        ]);
+    }
+     /**
+     * @Route("/show/{id}", name="show")
+     */
+    public function show(Uzytkownicy $user)
+    {
+        return $this->render('register/show.html.twig', [
+            'user' => $user
         ]);
     }
 }
