@@ -1,23 +1,23 @@
 {% extends 'template.html.twig' %}
 
 {% block title %}Hello LoginController!{% endblock %}
-{% block stylesheets %} 
-<link rel="stylesheet" href="../test.css">
-{% endblock %}
+{% block stylesheets %}{% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-    <p>{{cos}}</p>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Program Files/xampp/htdocs/projekt/SymfonyV4/src/Controller/LoginController.php'|file_link(0) }}">src/Controller/LoginController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Program Files/xampp/htdocs/projekt/SymfonyV4/templates/login/index.html.twig'|file_link(0) }}">templates/login/index.html.twig</a></code></li>
-    </ul>
+<form action="login.php" method="post">
+    <label for="username">Nazwa użytkownika:</label>
+    <input type="text" id="username" name="username" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" required>
+    <label for="password">Hasło:</label>
+    <input type="password" id="password" name="password" pattern="(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+    <div id="lower">
+    <input type="checkbox"><label class="check" for="checkbox">Zapamiętaj mnie!</label>
+    <input type="submit" value="Login">
+    <h3 style="color: red;">
+    <?php if(isset( $_SESSION['badPass']) && !isset($_SESSION['user']))
+    {
+        print($_SESSION['badPass']);
+    } ?>
+    </h3>
+</form>
 </div>
 {% endblock %}

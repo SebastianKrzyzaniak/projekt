@@ -17,15 +17,13 @@ class LoginController extends AbstractController
     public function index()
     {
         return $this->render('login/index.html.twig', [
-            'controller_name' => 'LoginController',
-            'cos' => 'loginController'
         ]);
     }
 
     /**
-     * @Route("/moniaCos/{username}/{password}/{town}", name="moniaCos")
+     * @Route("/Logowanie", name="Logowanie")
      */
-    public function moniaCos($username, $password, $town)
+    public function Logowanie($username, $password, $town)
     {
         $register = new Uzytkownicy();
         $register->setUsername($username);
