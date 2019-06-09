@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
-        <link rel="stylesheet" href="bootstrap/bootstrap.css">
+        <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap.css') }}">
         <link href='http://fonts.googleapis.com/css?family=Cormorant&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     </head>
     <body>
@@ -13,7 +13,7 @@
         <div class="container header__container">
             <div class="header__row row ">
                 <div class="header__logo">
-                    <img src="img/logo1.png" alt="logo">
+                    <img src="{{ asset('img/logo1.png') }}" alt="logo">
                 </div>
                 <div class="header__info">
                 {# // odnosnik do widoku register czy coś  #}
