@@ -1,23 +1,21 @@
 {% extends 'template.html.twig' %}
 
 {% block title %}Hello LoginController!{% endblock %}
-{% block stylesheets %}{% endblock %}
+{% block stylesheets %} 
+<link rel="stylesheet" type="text/css" href="{{ asset('css/form.css') }}" />
+{% endblock %}
 {% block body %}
-<div class="example-wrapper">
-<form action="login.php" method="post">
+<div class="top_form"><h1>Logowanie</h2></div>
+<div id="panel">
+<form action="login" name="uzytkownicy" method="POST">
     <label for="username">Nazwa użytkownika:</label>
     <input type="text" id="username" name="username" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" required>
-    <label for="password">Hasło:</label>
+    <label class="passwd" for="password">Hasło: <span class="passwdInf" style="font-size:14px;">&#9432</span><span class="regextext"> Number<br> Upper case<br> Lower case <br> Min. 8 chars<br> Special character</span></label> 
     <input type="password" id="password" name="password" pattern="(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
     <div id="lower">
     <input type="checkbox"><label class="check" for="checkbox">Zapamiętaj mnie!</label>
-    <input type="submit" value="Login">
-    <h3 style="color: red;">
-    <?php if(isset( $_SESSION['badPass']) && !isset($_SESSION['user']))
-    {
-        print($_SESSION['badPass']);
-    } ?>
-    </h3>
-</form>
+    <input type="submit" value="Confirm">
+    </div>
+    </form>
 </div>
 {% endblock %}

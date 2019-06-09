@@ -3,10 +3,11 @@
 {% block title %}Register{% endblock %}
 
 {% block stylesheets %}
- <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}" />
+ <link rel="stylesheet" type="text/css" href="{{ asset('css/form.css') }}" />
 {# <style>{% include 'register/css/index.css' %}</style> #}
 {% endblock %}
 {% block body %}
+<div class="top_form"><h1>Rejestracja</h1></div>
 <div id="panel">
 <form action="create" name="uzytkownicy" method="POST">
     <label for="username">Nazwa użytkownika:</label>

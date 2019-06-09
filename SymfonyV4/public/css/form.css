@@ -90,3 +90,9 @@
         .passwd .passwdInf:hover ~ .regextext {
           visibility: visible;
         }
+
+        .top_form{
+            font-size: 2.5rem;
+            background: #ecf2f5;
+            text-align: center;
+        }

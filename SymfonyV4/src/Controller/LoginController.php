@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Uzytkownicy;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
  /**
      * @Route("/login", name="login.")
@@ -16,27 +18,23 @@ class LoginController extends AbstractController
      */
     public function index()
     {
-        return $this->render('login/index.html.twig', [
+        return $this->render('login/login.html.twig', [
         ]);
     }
 
     /**
-     * @Route("/Logowanie", name="Logowanie")
+     * @Route("/logowanie", name="Logowanie")
      */
-    public function Logowanie($username, $password, $town)
+    public function Logowanie(Request $request) : Response
     {
-        $register = new Uzytkownicy();
-        $register->setUsername($username);
-        $register->setPassword($password);
-        $register->setTown($town);
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($register);
-        $em->flush();
+        $uzytkownicy->setUsername($_POST['username']);
+        $uzytkownicy->setPassword($_POST['password']);
+        $uzytkownicy->setTown($_POST['town']);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($uzytkownicy);
+        $entityManager->flush();
 
-        return $this->render('login/moniaCos.html.twig', [
-            'controller_name' => 'LoginController',
-            'parametr_monia' => $username.$password.$town,
-        ]);
+        return $this->redirect('http://localhost:8000/home');
     }
     
 }
