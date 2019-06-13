@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-
+use App\Repository\RestaurantRepository;
 
 /**
      * @Route("/restaurant", name="restaurant")
@@ -14,12 +14,12 @@ class RestaurantController extends AbstractController
     /**
      * @Route("/{id}", name="index")
      */
-    public function index($id )
+    public function index($id, RestaurantRepository $restaurant )
     {
-    
+        $r = $restaurant->findAll()[0]->getComments();
 
         return $this->render('restaurant/index.html.twig', [
-            'controller_name' => 'index',
+            'controller_name' => 'index'
         ]);
     }
 

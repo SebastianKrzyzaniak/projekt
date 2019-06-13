@@ -38,6 +38,11 @@ class Restaurant
      */
     private $comments;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $img_path;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -108,6 +113,18 @@ class Restaurant
             $this->comments->removeElement($comment);
             $comment->removeRestaurantId($this);
         }
+
+        return $this;
+    }
+
+    public function getImgPath(): ?string
+    {
+        return $this->img_path;
+    }
+
+    public function setImgPath(?string $img_path): self
+    {
+        $this->img_path = $img_path;
 
         return $this;
     }
