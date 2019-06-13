@@ -89,8 +89,8 @@
         "utilities/_text.scss",
         "utilities/_visibility.scss",
         "_print.scss",
-        "../views/_header.scss",
-        "../views/_footer.scss"
+        "../components/_header.scss",
+        "../components/_footer.scss"
     ],
     "names": [],
     "file": "bootstrap.css"
