@@ -1,8 +1,18 @@
+header {
+    position: relative;
+}
 .header {
     height: vw(100px);
     max-height: 100px;
     min-height: 85px;
+    position: fixed;
+    background-color: #ffffff;
+    z-index: 10;
+    width: 100%;    
     border-bottom: $color-border 1px solid;
+}
+main {
+    padding-top: 85px;
 }
 
 .header__container {
@@ -40,4 +50,13 @@
 .header__logoutIcon { 
     width: 35px;
 }
-
+@media (min-width: 1400px) {
+    main {
+        padding-top: vw(100px);
+    } 
+}
+@media (min-width: $papabear-up) {
+    main {
+        padding-top: 100px;
+    } 
+}

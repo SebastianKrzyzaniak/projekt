@@ -1,0 +1,10 @@
+
+@import "../bootstrap/functions";
+@import "../bootstrap/variables";
+@import "../bootstrap/mixins";
+@import "../bootstrap/forms";
+@import "../bootstrap/buttons";
+
+.login__baner {
+    background-image: url("../img/login_banner.jpg");
+}
