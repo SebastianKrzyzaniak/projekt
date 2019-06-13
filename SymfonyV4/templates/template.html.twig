@@ -3,8 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+        
+        {% endblock %}
         <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap.css') }}">
+        {# <link rel="stylesheet" href="{{ asset('view/header.css') }}">
+        <link rel="stylesheet" href="{{ asset('view/foter.css') }}"> #}
         <link href='http://fonts.googleapis.com/css?family=Cormorant&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     </head>
     <body>
@@ -19,12 +23,12 @@
                 {# // odnosnik do widoku register czy coś  #}
                     <a class="header__register" href="#">
                         <p class="-mobileHidden">Zarejestruj się</p>
-                        <img class="header__registerIcon -mobileVisible" src="img/icon_02.svg" alt="Account">
+                        <img class="header__registerIcon -mobileVisible" src="{{ asset('img/icon_02.svg') }}" alt="Account">
                     </a>
                 {# // a jak jestesmy zalogowani to : #}
                     <a class="header__logout" href="#">
                         <p class="-mobileHidden">Wyloguj się</p>
-                        <img class="header__logoutIcon -mobileVisible" src="img/close1.png" alt="Account">
+                        <img class="header__logoutIcon -mobileVisible" src="{{ asset('img/close1.png') }}" alt="Account">
                     </a>
 
                 </div>
@@ -33,8 +37,9 @@
     </div>
     </header>
     <main>
+            {% block body %}{% endblock %}
+
     </main>
-        {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     <footer>
     <div class="footer">

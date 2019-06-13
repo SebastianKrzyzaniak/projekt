@@ -42,5 +42,6 @@
 @import "spinners";
 @import "utilities";
 @import "print";
-@import "../views/header";
-@import "../views/footer";
+@import "../views/_header.scss";
+@import "../views/_footer.scss";
+

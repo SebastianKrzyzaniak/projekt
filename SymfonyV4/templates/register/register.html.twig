@@ -3,26 +3,40 @@
 {% block title %}Register{% endblock %}
 
 {% block stylesheets %}
- <link rel="stylesheet" type="text/css" href="{{ asset('css/form.css') }}" />
+ <link rel="stylesheet" type="text/css" href="{{ asset('templates/register.css') }}" />
 {# <style>{% include 'register/css/index.css' %}</style> #}
 {% endblock %}
 {% block body %}
-<div class="top_form"><h1>Rejestracja</h1></div>
-<div id="panel">
-<form action="create" name="uzytkownicy" method="POST">
-    <label for="username">Nazwa użytkownika:</label>
-    <input type="text" id="username" name="username" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" required>
-    <label class="passwd" for="password">Hasło: <span class="passwdInf" style="font-size:14px;">&#9432</span><span class="regextext"> Number<br> Upper case<br> Lower case <br> Min. 8 chars<br> Special character</span></label> 
-    <input type="password" id="password" name="password" pattern="(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
-    <label for="town">Miasto:</label>
-    <input type="text" id="town" name="town" pattern="[A-Za-z0-9 -ęóąśłżźćń]{1,30}" required>
-    <div class="error_form">{% if error is defined %}{{ error }} {% endif %}</div>
-    <div id="lower">
-    <input type="checkbox"><label class="check" for="checkbox">Zapamiętaj mnie!</label>
-    <input type="submit" value="Confirm">
-    </form>
+<section class="register">
+    <div class="register__baner banner__div row">
+        <div class="register__h2 banner__text"><h2>Zarejestruj się!</h2></div>
     </div>
-</div>
+        <div class="container register__form form">
+            <div class="form__panel">
+                <form action="create" name="uzytkownicy" method="POST">
+                    <label class="form__field" for="username">Nazwa użytkownika:</label>
+                    <input type="text" id="username" name="username" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" required>
+                    <label class="passwd form__field" for="password">Hasło: <span class="passwdInf" style="font-size:14px;">&#9432</span><span class="regextext"> Number<br> Upper case<br> Lower case <br> Min. 8 chars<br> Special character</span></label> 
+                    <input type="password" id="password" name="password" pattern="(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+                    <label class="form__field" for="town">Miasto:</label>
+                    <input type="text" id="town" name="town" pattern="[A-Za-z0-9 -ęóąśłżźćń]{1,30}" required>
+                    <div class="error_form">{% if error is defined %}{{ error }} {% endif %}</div>
+                    <div class="form__submit">
+                        <div class="form__remember row ">
+                        <label class="form__check row">
+                            <input type="checkbox" class="-hide form__checkbox"> 
+                            <span class="form__checkboxMask"></span>
+                            <span>Zapamiętaj mnie!</span>
+                            </label>
+                        </div>
+                    <input class="form__button btn" type="submit" value="Wyślij">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
 
 
