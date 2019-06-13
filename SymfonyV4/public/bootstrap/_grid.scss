@@ -47,8 +47,7 @@ $papabear-up:  $container-width + $container-max-padding * 2;
 	margin-left: auto !important;
 	max-width: $container-width + $container-max-padding * 2;
 }
-
-@media (min-width: $mamabear-min) {
+@media (min-width: $mamabear-min) { //768px
 	.container {
 		padding-right: 2.9411vw;
 		padding-left: 2.9411vw;

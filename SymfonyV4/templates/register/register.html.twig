@@ -22,14 +22,12 @@
                     <input type="text" id="town" name="town" pattern="[A-Za-z0-9 -ęóąśłżźćń]{1,30}" required>
                     <div class="error_form">{% if error is defined %}{{ error }} {% endif %}</div>
                     <div class="form__submit">
-                        <div class="form__remember row ">
                         <label class="form__check row">
                             <input type="checkbox" class="-hide form__checkbox"> 
                             <span class="form__checkboxMask"></span>
                             <span>Zapamiętaj mnie!</span>
-                            </label>
-                        </div>
-                    <input class="form__button btn" type="submit" value="Wyślij">
+                        </label>
+                        <input class="form__button btn" type="submit" value="Wyślij">
                     </div>
 
                 </form>
