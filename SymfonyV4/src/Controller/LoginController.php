@@ -14,6 +14,11 @@ use App\Repository\UzytkownicyRepository;
      */
 class LoginController extends AbstractController
 {
+    public function __construct()
+    {
+    //   session_start();
+    } 
+
     /**
      * @Route("/", name="login")
      */
@@ -53,6 +58,12 @@ class LoginController extends AbstractController
 
         // $_SESSION['user']=$user;  //ustawienie zmiennej user w sesji serwera
         //unset($_SESSION['badPass']);
+        $session = $this->get('session');
+        $session->set('logged',array(
+            'id' => $userFromDb->getId(),
+            'username' => $userFromDb->getUsername(),
+            'town' => $userFromDb->getTown()
+        ));
         return $this->redirect('http://localhost:8000/home');
     }
     

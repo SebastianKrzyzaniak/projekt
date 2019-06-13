@@ -1,3 +1,4 @@
+{% set logged = app.session.get('logged') %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,21 +13,26 @@
     <div class="header">
         <div class="container header__container">
             <div class="header__row row ">
-                <div class="header__logo">
+                <a  href="../home" class="header__logo">
                     <img src="{{ asset('img/logo1.png') }}" alt="logo">
-                </div>
+                </a>
                 <div class="header__info">
                 {# // odnosnik do widoku register czy coś  #}
-                    <a class="header__register" href="#">
-                        <p class="-mobileHidden">Zarejestruj się</p>
+                {% if logged == null %}
+                    <a class="header__register" href="../login">
+                        <p class="-mobileHidden">Logowanie</p>
                         <img class="header__registerIcon -mobileVisible" src="img/icon_02.svg" alt="Account">
                     </a>
+                {% else %}
                 {# // a jak jestesmy zalogowani to : #}
-                    <a class="header__logout" href="#">
+                    <a class="header__register" href="#">
+                        <p class="">Zalogowany jako: {{ logged['username'] }}</p>
+                    </a>
+                    <a class="header__logout" href="../home/logout">
                         <p class="-mobileHidden">Wyloguj się</p>
                         <img class="header__logoutIcon -mobileVisible" src="img/close1.png" alt="Account">
                     </a>
-
+                {% endif %}
                 </div>
             </div>
         </div>
