@@ -1109,6 +1109,10 @@ form {
   padding: 50px 0;
 }
 
+.form__fileadd {
+  padding-top: 20px;
+}
+
 .btn {
   display: inline-block;
   font-weight: 400;
