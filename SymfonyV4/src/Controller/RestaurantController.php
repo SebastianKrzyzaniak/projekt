@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\RestaurantRepository;
 use Symfony\Component\HttpFoundation\Request;
+use App\Functions\Functions;
+use App\Entity\Restaurant;
 
 /**
      * @Route("/restaurant", name="restaurant")
@@ -13,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 class RestaurantController extends AbstractController
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/{id}", name="index")
      */
     public function index($id, RestaurantRepository $restaurant )
     {
@@ -29,41 +31,41 @@ class RestaurantController extends AbstractController
      */
     public function add(Request $request)
     {
-        if(!isset($_POST['username']) ){
+        if(!isset($_POST['restaurantName']) ){
         return $this->render('restaurant/add.html.twig', [
             'controller_name' => 'add',
         ]);
         }
 
-        $username = $_POST['username'];
+        $restaurantName = $_POST['restaurantName'];
         $town = $_POST['town'];
 
         move_uploaded_file($_FILES['file']['tmp_name'], "images/".$_FILES['file']['name']);
 
-        $zdjecie = imagecreatefromjpeg("images/fajnypies.jpg"); 
+        $dst_width = 910;
+        $dst_height = 679;
 
-        $x = imagesx($zdjecie);
-        $y = imagesy($zdjecie);
+        //--convert image to custom config
+        $result_image_path = Functions::ChangeImageSize("images/".$_FILES['file']['name'],$dst_width, $dst_height);
+        //--end
+        if($result_image_path == null) //podano zły format zdj
+        {
+            return $this->render('restaurant/add.html.twig',[
+                'error' => "Wamagany format: [*.jpg] / [*.png] / [*.gif] / [*.bmp]"
+            ]);
+        }
 
-        $final_x = 910;
-        $final_y = 679;
+        $restaurant = new Restaurant();
+        $restaurant->setName($restaurantName);
+        $restaurant->setTown($town);
+        $restaurant->setImgPath($result_image_path);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($restaurant);
+        $entityManager->flush();
 
-        $tmp_x = 0;
-        $tmp_y = 0;
-
-        // i o to proste skalowanie ;]
-        if($y<$x) $tmp_x = ceil(($x-$final_x*$y/$final_y)/2);
-        elseif($x<$y) $tmp_y = ceil(($y-$final_y*$x/$final_x)/2);
-            
-        $nowe_zdjecie = imagecreatetruecolor($final_x, $final_y); 
-        imagecopyresampled($nowe_zdjecie, $zdjecie, 0, 0, $tmp_x, $tmp_y, $final_x, $final_y, $x-2*$tmp_x, $y-2*$tmp_y);
-
-        imagejpeg($nowe_zdjecie, "images/".$_FILES['file']['name'], 100);
-
-        return $this->render('restaurant/index.html.twig',[
-            'x' => imagesx($nowe_zdjecie),
-            'y' => imagesy($nowe_zdjecie)
-        ]);
+        return $this->redirectToRoute('restaurantrate', [
+            'id' => $restaurant->getId()
+            ]);
     }
 
      /**
@@ -77,12 +79,12 @@ class RestaurantController extends AbstractController
     }
 
      /**
-     * @Route("/rate", name="rate")
+     * @Route("/rate/{id}", name="rate")
      */
-    public function rate()
+    public function rate(Request $request)
     {
         return $this->render('restaurant/rate.html.twig', [
-            'controller_name' => 'HomeController',
+            'id' => "ZMIENIC LOGIKE W RESTAURANT.RATE",
         ]);
     }
 }

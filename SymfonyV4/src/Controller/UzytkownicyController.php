@@ -93,4 +93,13 @@ class UzytkownicyController extends AbstractController
 
         return $this->redirectToRoute('uzytkownicy_index');
     }
+
+     /**
+     * @Route("/costam", name="costam", methods={"GET"})
+     */
+    public function costam(){
+        return $this->redirectToRoute('uzytkownicy_index', [
+            'id' => 4,
+        ]);
+    }
 }
