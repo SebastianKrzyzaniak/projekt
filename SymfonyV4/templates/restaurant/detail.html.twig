@@ -60,11 +60,11 @@
                     <input type="radio" id="star1_" name="rate" value="1" required/>
                     <label for="star1_" title="text">1 star</label>
                 </div>
-                <textarea class="rates__textarea" required ></textarea>
+                <textarea minlength="10" class="rates__textarea" required ></textarea>
                 <div class="rates__button">
                     <input class=" btn" type="submit" value="Wyślij">
                 </div>
-
+                <div class="error_form">{% if error is defined %}{{ error }} {% endif %}</div>   
             </form>  
         </div>  
     </section>  
