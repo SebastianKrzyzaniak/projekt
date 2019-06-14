@@ -79,21 +79,34 @@ class RestaurantController extends AbstractController
      /**
      * @Route("/search", name="search")
      */
-    public function search()
+    public function search(Request $request)
     {
-        return $this->render('restaurant/search.html.twig', [
-            'controller_name' => 'search'
-        ]);
+        if(!isset($_POST['select']))
+        {
+            return $this->render('restaurant/search.html.twig');
+        }
+
+        if($_POST['select'] == "name")
+        {
+            return $this->render('restaurant/search.html.twig',[
+                'lstRestaurantsInfo' => 'o nazwie "'.$_POST['phrase'].'"'
+            ]);
+        }
+
+        if($_POST['select'] == "town")
+        {
+            return $this->render('restaurant/search.html.twig',[
+                'lstRestaurantsInfo' => 'z miasta '.$_POST['phrase']
+            ]);
+        }
     }
 
      /**
-     * @Route("/rate/{id}", name="rate")
+     * @Route("/rate", name="rate")
      */
     public function rate(Request $request)
     {
         //tutaj przyjmujemy oceny, komentarze, zapisujemy i idziemy do detail/{id}
-        return $this->render('restaurant/rate.html.twig', [
-            'id' => "ZMIENIC LOGIKE W RESTAURANT.RATE",
-        ]);
+        return $this->redirect("../home");
     }
 }
