@@ -16,17 +16,20 @@
             <div class="restaurantsList__search search row">
                 <div class="search__row row">
                     <div class="search__border row">
-                        <input type="text" placeholder="Wpisz nazwę lub miasto" value="" class="search__input search--top">
-                        <div class="search__select slate search--top">
-                        <select>
-                            <option value="Nazwa">Nazwa</option>
-                            <option value="Miasto">Miasto</option>
-                        </select>
-                        </div>
-                        <a href="#" class="search__btn search--top btn">
-                        <span class="-mobileHidden">Szukaj</span>
-                            <img class="search__icon" src="{{ asset('img/icon_04.svg') }}" alt="Search">
-                        </a>
+                        <form action="search" name="restaurant" method="POST" class="search__border row">
+                            <input type="text" name="phrase" placeholder="Wpisz nazwę lub miasto" value="" class="search__input search--top">
+                            <div class="search__select slate search--top">
+                            <select name="select">
+                                <option  value="name">Nazwa</option>
+                                <option  value="town">Miasto</option>
+                            </select>
+                            </div>
+                            <label class="search__btn search--top btn">
+                            <input type="submit" class="-hide">
+                            <span class="-mobileHidden">Szukaj</span>
+                                <img class="search__icon" src="{{ asset('img/icon_04.svg') }}" alt="Search">
+                            </label>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -38,11 +41,11 @@
         <div class="restaurantsList__header">
             {# restauracje w twojej okolicy #}
             <div class="restaurantList__yourTown restaurantsList--header">
-                <span>Lista restauracji z Twojego miasta:</span>
+                <span>Lista restauracji {% if lstRestaurantsInfo is defined %} {{ lstRestaurantsInfo }} {% else %} z Twojego miasta: {% endif %}</span>
             </div>
             {# restauracje szukane po nazwie #}
             {# <div class="restaurantsList__name restaurantsList--header">
-                <pspanSzukana restauracja: Chilli</span>
+                <span>Szukana restauracja: Chilli</span>
             </div> #}
             {# restauracje szukane po nazwie miasta #}
             {# <div class="restaurantsList__yourTown restaurantsList--header">

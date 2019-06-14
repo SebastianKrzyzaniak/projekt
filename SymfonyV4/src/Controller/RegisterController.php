@@ -50,7 +50,7 @@ class RegisterController extends AbstractController
         $entityManager->persist($uzytkownicy);
         $entityManager->flush();
 
-        return $this->redirect('http://localhost:8000/login');
+        return $this->redirect('../login');
     }
 
      /**
