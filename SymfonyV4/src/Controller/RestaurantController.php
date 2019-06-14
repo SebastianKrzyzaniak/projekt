@@ -15,14 +15,26 @@ use App\Entity\Restaurant;
 class RestaurantController extends AbstractController
 {
     /**
-     * @Route("/{id}", name="index")
+     * @Route("/", name="index")
      */
-    public function index($id, RestaurantRepository $restaurant )
+    public function index( RestaurantRepository $restaurant )
     {
         // $r = $restaurant->findAll()[0]->getComments();
 
         return $this->render('restaurant/index.html.twig', [
             'controller_name' => 'index'
+        ]);
+    }
+
+    /**
+     * @Route("/detail/{id}", name="detail")
+     */
+    public function detail($id, RestaurantRepository $restaurant )
+    {
+        // $r = $restaurant->findAll()[0]->getComments();
+
+        return $this->render('restaurant/detail.html.twig', [
+            'controller_name' => 'detail'
         ]);
     }
 
