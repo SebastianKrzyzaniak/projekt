@@ -28,8 +28,8 @@ class RestaurantController extends AbstractController
      */
     public function add()
     {
-        return $this->render('home/add.html.twig', [
-            'controller_name' => 'HomeController',
+        return $this->render('restaurant/add.html.twig', [
+            'controller_name' => 'restaurant.add',
         ]);
     }
 
@@ -38,8 +38,8 @@ class RestaurantController extends AbstractController
      */
     public function search()
     {
-        return $this->render('home/search.html.twig', [
-            'controller_name' => 'HomeController',
+        return $this->render('restaurant/search.html.twig', [
+            'controller_name' => 'restaurant.search',
         ]);
     }
 
