@@ -9,24 +9,25 @@
 
 <section class="add">
     <div class="add__baner banner__div row">
-        <div class="add__h2 banner__text"><h2>Zarejestruj się!</h2></div>
+        <div class="add__h2 banner__text"><h2>Dodaj restaurację</h2></div>
     </div>
         <div class="container add__form form">
             <div class="form__panel">
-                <form action="create" name="uzytkownicy" method="POST">
-                    <label class="form__field" for="username">Nazwa użytkownika:</label>
-                    <input type="text" id="username" name="username" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" required>
-                    <label class="passwd form__field" for="password">Hasło: <span class="passwdInf" style="font-size:14px;">&#9432</span><span class="regextext"> Number<br> Upper case<br> Lower case <br> Min. 8 chars<br> Special character</span></label> 
-                    <input type="password" id="password" name="password" pattern="(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+                <form action="create" name="restaurant" method="POST" enctype="multipart/form-data">
+                    <label class="form__field" for="username">Nazwa restauracji</label>
+                    <input type="text" id="username" name="username" required>
+                   
                     <label class="form__field" for="town">Miasto:</label>
                     <input type="text" id="town" name="town" pattern="[A-Za-z0-9 -ęóąśłżźćń]{1,30}" required>
+
+                    <label class="form__field form__fileadd" for="file">
+                    </label>
+                    <input class="form__field add--field" type="file" id="file" name="file">
+
                     <div class="error_form">{% if error is defined %}{{ error }} {% endif %}</div>
+
+
                     <div class="form__submit">
-                        <label class="form__check row">
-                            <input type="checkbox" class="-hide form__checkbox"> 
-                            <span class="form__checkboxMask"></span>
-                            <span>Zapamiętaj mnie!</span>
-                        </label>
                         <input class="form__button btn" type="submit" value="Wyślij">
                     </div>
 

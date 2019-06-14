@@ -4,3 +4,11 @@
 @import "../bootstrap/mixins";
 @import "../bootstrap/forms";
 @import "../bootstrap/buttons";
+
+
+.add__baner {
+    background-image: url("../img/add_banner.jpg");
+}
+.add--field.form__field {
+    width:100%;
+}

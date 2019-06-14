@@ -12,11 +12,11 @@ use App\Repository\RestaurantRepository;
 class RestaurantController extends AbstractController
 {
     /**
-     * @Route("/{id}", name="index")
+     * @Route("/", name="index")
      */
     public function index($id, RestaurantRepository $restaurant )
     {
-        $r = $restaurant->findAll()[0]->getComments();
+        // $r = $restaurant->findAll()[0]->getComments();
 
         return $this->render('restaurant/index.html.twig', [
             'controller_name' => 'index'
@@ -29,7 +29,7 @@ class RestaurantController extends AbstractController
     public function add()
     {
         return $this->render('restaurant/add.html.twig', [
-            'controller_name' => 'restaurant.add',
+            'controller_name' => 'add',
         ]);
     }
 
@@ -39,7 +39,7 @@ class RestaurantController extends AbstractController
     public function search()
     {
         return $this->render('restaurant/search.html.twig', [
-            'controller_name' => 'restaurant.search',
+            'controller_name' => 'search'
         ]);
     }
 
@@ -48,7 +48,7 @@ class RestaurantController extends AbstractController
      */
     public function rate()
     {
-        return $this->render('home/rate.html.twig', [
+        return $this->render('restaurant/rate.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }

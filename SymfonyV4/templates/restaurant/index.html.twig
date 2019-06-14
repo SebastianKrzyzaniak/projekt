@@ -10,11 +10,12 @@
 
 <div class="example-wrapper">
     
-    {% for i in controller_name %}
+    {# {% for i in controller_name %}
     <h1>{{ i.comment }}</h1>
-    {% endfor %}
+    {% endfor %} #}
     This friendly message is coming from:
     <ul>
+    {{ controller_name }}
         <li>Your controller at <code><a href="{{ 'C:/Program Files/xampp/htdocs/projekt/SymfonyV4/src/Controller/RestaurantController.php'|file_link(0) }}">src/Controller/RestaurantController.php</a></code></li>
         <li>Your template at <code><a href="{{ 'C:/Program Files/xampp/htdocs/projekt/SymfonyV4/templates/restaurant/index.html.twig'|file_link(0) }}">templates/restaurant/index.html.twig</a></code></li>
     </ul>

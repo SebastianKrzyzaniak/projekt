@@ -175,6 +175,10 @@ form {
   padding: 50px 0;
 }
 
+.form__fileadd {
+  padding-top: 20px;
+}
+
 .btn {
   display: inline-block;
   font-weight: 400;
@@ -832,6 +836,14 @@ fieldset:disabled a.btn {
 input[type="submit"].btn-block,
 input[type="reset"].btn-block,
 input[type="button"].btn-block {
+  width: 100%;
+}
+
+.add__baner {
+  background-image: url("../img/add_banner.jpg");
+}
+
+.add--field.form__field {
   width: 100%;
 }
 /*# sourceMappingURL=add.css.map */
