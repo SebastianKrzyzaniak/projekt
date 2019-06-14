@@ -19,22 +19,18 @@ class RestaurantController extends AbstractController
      */
     public function index( RestaurantRepository $restaurant )
     {
-        // $r = $restaurant->findAll()[0]->getComments();
-
-        return $this->render('restaurant/index.html.twig', [
-            'controller_name' => 'index'
-        ]);
+        return $this->redirectToRoute('restaurantsearch');
     }
 
     /**
      * @Route("/detail/{id}", name="detail")
      */
-    public function detail($id, RestaurantRepository $restaurant )
+    public function detail($id, RestaurantRepository $restaurantRepository )
     {
-        // $r = $restaurant->findAll()[0]->getComments();
+         $restaurant = $restaurantRepository->findOneBy(['id' => $id]);
 
         return $this->render('restaurant/detail.html.twig', [
-            'controller_name' => 'detail'
+            'restaurant' => $restaurant
         ]);
     }
 
@@ -95,6 +91,7 @@ class RestaurantController extends AbstractController
      */
     public function rate(Request $request)
     {
+        //tutaj przyjmujemy oceny, komentarze, zapisujemy i idziemy do detail/{id}
         return $this->render('restaurant/rate.html.twig', [
             'id' => "ZMIENIC LOGIKE W RESTAURANT.RATE",
         ]);
