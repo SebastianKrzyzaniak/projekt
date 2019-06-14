@@ -20,9 +20,9 @@
                     <label class="form__field" for="town">Miasto:</label>
                     <input type="text" id="town" name="town" pattern="[A-Za-z0-9 -ęóąśłżźćń]{1,30}" required>
 
-                    <label class="form__field form__fileadd" for="file">
+                    <label class=" form__fileadd" for="file">
                     </label>
-                    <input class="form__field add--field" type="file" id="file" name="file">
+                    <input class="form__field add--field form-control-file" type="file" id="file" name="file">
 
                     <div class="error_form">{% if error is defined %}{{ error }} {% endif %}</div>
 
