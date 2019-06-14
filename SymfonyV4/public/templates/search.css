@@ -179,15 +179,63 @@ form {
   padding-top: 20px;
 }
 
+/*!
+ * Bootstrap Grid v4.3.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+.-mobileVisible {
+  display: block;
+}
+
+.-mobileHidden {
+  display: none;
+}
+
+.container {
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  max-width: 1700px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-right: 2.9411vw;
+    padding-left: 2.9411vw;
+  }
+  .-mobileVisible {
+    display: none;
+  }
+  .-mobileHidden {
+    display: block;
+  }
+}
+
+@media (min-width: 1700px) {
+  .container {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
 .add__baner {
   background-image: url("../img/search_banner.jpg");
 }
 
-.restaurantList .container {
+.restaurantsList__header h2 {
+  padding: 2rem 0;
+  font-family: "Cormorant", sans-serif;
+  font-weight: 600;
+}
+
+.restaurantsList .container {
   height: 100%;
 }
 
-.restaurantList__search {
+.restaurantsList__search {
   height: 100%;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -197,11 +245,11 @@ form {
 .search--top {
   height: 50px;
   background: #fff;
-  color: gray;
+  color: #000;
   font-family: "Cormorant", sans-serif;
 }
 
-.search__btn {
+a.search__btn {
   border-radius: 0 10px 10px 0;
   background: #fff;
   display: -webkit-box;
@@ -210,25 +258,25 @@ form {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 0 15px;
+  padding: 0 10px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  color: #000 !important;
 }
 
-.search__select {
-  position: relative;
-  overflow: hidden;
-  width: 240px;
+a.search__btn:focus {
+  border: none;
 }
 
-.search__select:after {
-  content: '>';
-  width: 30px;
+a.search__btn:hover span {
+  border: none;
+}
+
+.search__select .nice-select {
+  font-size: 15px;
   height: 100%;
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  border: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -238,50 +286,123 @@ form {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
 }
 
-.search__select select {
-  background: #fff;
-  color: gray;
-  border: none;
-  height: 100%;
-  font-size: 14px;
-  padding: 5px;
-  /* If you add too much padding here, the options won't show in IE */
-  width: 90px;
-}
-
-.search__select select option {
-  color: gray;
-}
-
-.search__select.slate {
-  width: 90px;
+.search__select .nice-select .current {
+  font-size: 16px;
 }
 
 .search__input {
-  width: 280px;
-  padding: 0 10px;
+  width: 45.3125vw;
+  max-width: 360px;
+  padding: 0 20px;
+  min-width: 145px;
   border-radius: 10px 0 0 10px;
+  font-size: 16px;
+  border: 0;
+}
+
+.search__input:focus {
   border: 0;
 }
 
 .search__row {
-  width: 800px;
+  width: 47.05882vw;
+  min-width: 284px;
+  max-width: 800px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: rgba(255, 255, 255, 0.7);
+  background: transparent;
   padding: 30px 0;
 }
 
 .search__border {
   border: 1px solid #eba951;
   border-radius: 10px;
+}
+
+.search__icon {
+  width: 15px;
+  margin-left: 10px;
+  height: 15px;
+}
+
+.restaurantsList--header {
+  font-family: "Cormorant", sans-serif;
+  font-size: 2rem;
+  padding: 30px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.restaurant {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.restaurant__more, .restaurant__name, .restaurant__lp {
+  font-family: "Cormorant", sans-serif;
+}
+
+.restaurant__grow {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  font-size: 2rem;
+}
+
+.restaurantsList__restaurant {
+  max-width: 800px;
+  margin: 0 auto;
+  border-bottom: 1px solid #eba951;
+  padding: 15px 0;
+}
+
+.restaurantsList__restaurant:last-child {
+  border-bottom: 1px solid transparent;
+}
+
+.restaurantsList__restaurants {
+  padding-bottom: 30px;
+}
+
+.restaurant__lp {
+  width: 50px;
+  font-size: 2rem;
+}
+
+.restaurant__more {
+  padding: 10px 20px;
+  color: #000 !important;
+  font-size: 1rem;
+  background: #eba951;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1200px) {
+  .search__row {
+    background: rgba(255, 255, 255, 0.7);
+  }
+}
+
+@media (min-width: 768px) {
+  a.search__btn {
+    padding: 0 20px;
+  }
 }
 /*# sourceMappingURL=search.css.map */

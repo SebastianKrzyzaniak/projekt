@@ -2,32 +2,109 @@
 {% block title %}Search{% endblock %}
 {% block stylesheets %} 
  <link rel="stylesheet" type="text/css" href="{{ asset('templates/search.css') }}" />
+ <link rel="stylesheet" href="{{ asset('components/nice_select/style.css') }}">
+
 {% endblock %}
 
 {% block body %}
-<section class="restaurantList">
+<div class="restaurantsList">
+    <div class="container">
+        <div class="restaurantsList__header"><h2>Znajdź restaurację</h2></div>
+    </div>
     <div class="add__baner banner__div row">
         <div class="container">
-            <div class="restaurantList__search search row">
+            <div class="restaurantsList__search search row">
                 <div class="search__row row">
                     <div class="search__border row">
-                        <input type="text" placeholder="Wpisz szukaną frazę" value="" class="search__input search--top">
+                        <input type="text" placeholder="Wpisz nazwę lub miasto" value="" class="search__input search--top">
                         <div class="search__select slate search--top">
                         <select>
                             <option value="Nazwa">Nazwa</option>
                             <option value="Miasto">Miasto</option>
                         </select>
                         </div>
-                        <a href="#" class="search__btn search--top">Szukaj</a>
+                        <a href="#" class="search__btn search--top btn">
+                        <span class="-mobileHidden">Szukaj</span>
+                            <img class="search__icon" src="{{ asset('img/icon_04.svg') }}" alt="Search">
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="restaurantsList__results">
+        <div class="container">
+
+        <div class="restaurantsList__header">
+            {# restauracje w twojej okolicy #}
+            <div class="restaurantList__yourTown restaurantsList--header">
+                <span>Lista restauracji z Twojego miasta:</span>
+            </div>
+            {# restauracje szukane po nazwie #}
+            {# <div class="restaurantsList__name restaurantsList--header">
+                <pspanSzukana restauracja: Chilli</span>
+            </div> #}
+            {# restauracje szukane po nazwie miasta #}
+            {# <div class="restaurantsList__yourTown restaurantsList--header">
+                <span>Szukane miasto: Poznań.</span>
+            </div> #}
+        </div>
+
+        <div class="restaurantsList__restaurants">
+
+        {# jedna restauracja #}
+            <div class="restaurantsList__restaurant restaurant">
+             <div class="restaurant__lp">
+                    <span>1</span>
+                </div>
+                <div class="grow restaurant__grow">
+                    <h3 class="restaurant__name">Chilli</h3>
+                    {# gwiazdki #}
+                </div>
+                <a href="/PODAC ID" class=" restaurant__more">Więcej</a>
+            </div>
+
+            {# druga restauracja #}
+              <div class="restaurantsList__restaurant restaurant">
+             <div class="restaurant__lp">
+                    <span>2</span>
+                </div>
+                <div class="grow restaurant__grow">
+                    <h3 class="restaurant__name">Americana</h3>
+                    {# gwiazdki #}
+                </div>
+                <a href="/PODAC ID" class=" restaurant__more">Więcej</a>
+            </div>
+
+            {# trzecia  #}
+
+              <div class="restaurantsList__restaurant restaurant">
+             <div class="restaurant__lp">
+                    <span>3</span>
+                </div>
+                <div class="grow restaurant__grow">
+                    <h3 class="restaurant__name">Manekin</h3>
+                    {# gwiazdki #}
+                </div>
+                <a href="/PODAC ID" class=" restaurant__more">Więcej</a>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+    
 
 
    
 
-</section>
+</div>
+</div>
 
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('js/jquery.nice-select.js') }}"> </script>
 {% endblock %}

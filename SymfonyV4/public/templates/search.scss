@@ -3,14 +3,22 @@
 @import "../bootstrap/variables";
 @import "../bootstrap/mixins";
 @import "../bootstrap/forms";
+@import "../bootstrap/grid";
 
 .add__baner {
     background-image: url("../img/search_banner.jpg");
 }
-.restaurantList .container {
+.restaurantsList__header {
+    & h2 {
+        padding: 2rem 0;
+        font-family: $font-primary;
+        font-weight: 600;
+    }
+}
+.restaurantsList .container {
     height: 100%;
 }
-.restaurantList__search {
+.restaurantsList__search {
     height: 100%;
     align-items: center;
 }
@@ -18,65 +26,132 @@
 .search--top {
     height: 50px;
     background: #fff;
-    color: gray;
+    color: #000;
     font-family: $font-primary;
 }
-.search__btn {
+a.search__btn {
     border-radius:  0 10px 10px 0;
     background: #fff;
     display: flex;
     justify-content: center;
-    padding: 0 15px;
+    padding: 0 10px;
     align-items: center;
+    color: #000 !important;
+    &:focus {
+        border: none;
+    }
+    &:hover {
+        & span {
+            border: none;
+        }
+
+    }
 
 }
-.search__select { 
-    position: relative;
-    &:after {
-        content: '>';
-        width: 30px;
-        height: 100%;
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transform: rotate(90deg);
-    }
-    overflow: hidden;
-    width: 240px;
- & select { 
-    background: #fff;
-    color: gray;
-    border: none;
-    height: 100%;
-    font-size: 14px;
-    padding: 5px; /* If you add too much padding here, the options won't show in IE */
-    width: 90px;
-    & option {
-        color: gray;
-    }
- }
-&.slate {
-    width: 90px;
- }
+ .search__select { 
+     & .nice-select {
+        font-size: 15px;
+         height: 100%;
+         border: 0;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         & .current {
+            font-size: 16px;
+
+         }
+     }
 }
 
 .search__input {
-    width: 280px;
-    padding: 0 10px;
+    width: vw(145px, 320px);
+    max-width: 360px;
+    padding: 0 20px;
+    min-width: 145px;
     border-radius: 10px 0 0 10px;
+    font-size: 16px;
     border: 0;
+    &:focus {
+        border: 0;
+    }
 }
 .search__row {
-    width: 800px;
+    width: vw(800px);
+    min-width: 284px;
+    max-width: 800px;
     justify-content: center;
     align-items: center;
-    background: rgba(255,255,255,0.7);
+    background: transparent;
     padding: 30px 0;
 }
 .search__border {
     border: 1px solid $color-primary;
     border-radius: 10px;
+}
+.search__icon {
+    width: 15px;
+    margin-left: 10px;
+    height: 15px;
+}
+
+.restaurantsList--header {
+    font-family: $font-primary;
+    font-size: 2rem;
+    padding: 30px 0;
+    display: flex;
+    justify-content: center;
+
+}
+.restaurant {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.restaurant__more, .restaurant__name, .restaurant__lp {
+font-family: $font-primary;
+}
+.restaurant__grow {
+    flex-grow: 1;
+    font-size: 2rem;
+
+}
+.restaurantsList__restaurant {
+    max-width: 800px;
+    margin: 0 auto;
+    border-bottom: 1px solid $color-primary;
+    padding: 15px 0;
+    &:last-child {
+        border-bottom: 1px solid transparent;
+
+    }
+
+}
+.restaurantsList__restaurants {
+    padding-bottom: 30px;
+}
+.restaurant__lp {
+    width: 50px;
+    font-size: 2rem;
+}
+.restaurant__more {
+    padding: 10px 20px;
+    color: #000 !important;
+    font-size: 1rem;
+    background: $color-primary;
+    text-transform: uppercase;
+
+}
+@media (min-width: 1200px) {
+    .search__row {
+        background: rgba(255,255,255,0.7);
+}
+.search__input {
+    // width: vw(360px);
+    // max-width: 360px;
+}
+}
+@media (min-width: $mamabear-min) {
+    a.search__btn {
+        padding: 0 20px;
+    }
 }
