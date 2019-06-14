@@ -1,0 +1,82 @@
+
+@import "../bootstrap/functions";
+@import "../bootstrap/variables";
+@import "../bootstrap/mixins";
+@import "../bootstrap/forms";
+
+.add__baner {
+    background-image: url("../img/search_banner.jpg");
+}
+.restaurantList .container {
+    height: 100%;
+}
+.restaurantList__search {
+    height: 100%;
+    align-items: center;
+}
+
+.search--top {
+    height: 50px;
+    background: #fff;
+    color: gray;
+    font-family: $font-primary;
+}
+.search__btn {
+    border-radius:  0 10px 10px 0;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 0 15px;
+    align-items: center;
+
+}
+.search__select { 
+    position: relative;
+    &:after {
+        content: '>';
+        width: 30px;
+        height: 100%;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: rotate(90deg);
+    }
+    overflow: hidden;
+    width: 240px;
+ & select { 
+    background: #fff;
+    color: gray;
+    border: none;
+    height: 100%;
+    font-size: 14px;
+    padding: 5px; /* If you add too much padding here, the options won't show in IE */
+    width: 90px;
+    & option {
+        color: gray;
+    }
+ }
+&.slate {
+    width: 90px;
+ }
+}
+
+.search__input {
+    width: 280px;
+    padding: 0 10px;
+    border-radius: 10px 0 0 10px;
+    border: 0;
+}
+.search__row {
+    width: 800px;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255,255,255,0.7);
+    padding: 30px 0;
+}
+.search__border {
+    border: 1px solid $color-primary;
+    border-radius: 10px;
+}

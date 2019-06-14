@@ -1,3 +1,33 @@
 {% extends 'template.html.twig' %}
 {% block title %}Search{% endblock %}
-<h1>search</h1>
+{% block stylesheets %} 
+ <link rel="stylesheet" type="text/css" href="{{ asset('templates/search.css') }}" />
+{% endblock %}
+
+{% block body %}
+<section class="restaurantList">
+    <div class="add__baner banner__div row">
+        <div class="container">
+            <div class="restaurantList__search search row">
+                <div class="search__row row">
+                    <div class="search__border row">
+                        <input type="text" placeholder="Wpisz szukaną frazę" value="" class="search__input search--top">
+                        <div class="search__select slate search--top">
+                        <select>
+                            <option value="Nazwa">Nazwa</option>
+                            <option value="Miasto">Miasto</option>
+                        </select>
+                        </div>
+                        <a href="#" class="search__btn search--top">Szukaj</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+   
+
+</section>
+
+{% endblock %}
