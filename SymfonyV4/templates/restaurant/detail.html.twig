@@ -3,10 +3,89 @@
 {% block title %}{{ restaurant.Name }}{% endblock %}
 
 {% block stylesheets %} 
+ <link rel="stylesheet" type="text/css" href="{{ asset('templates/details.css') }}" />
+
 {% endblock %}
 
 {% block body %}
+<section class="details">
+    <div class="container">  
+           <div class="details__row">  
+               <div class="details__left">  
+                   <div class=" details__text col">  
+                           <h2 class="details__header">  
+                            {{ restaurant.Name }}
+                           </h2>  
+                    
+                           <div class=" details__desc">  
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lectus aliquet, ultricies arcu eu, tristique nisl. Donec at molestie metus, ut dignissim elit. Integer laoreet hendrerit augue in varius. Vestibulum quis lacus sit amet magna ornare condimentum iaculis ac lorem. Sed pharetra accumsan arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean et metus blandit, tincidunt arcu in, bibendum tortor.
+                           </div>  
+                    
+                           <div class=" details__buttons">  
+                            <div class="rate rate-static">
+                                <input type="checkbox" id="star5" name="rate" value="5" onclick="return false" />
+                                <label for="star5" title="text">5 stars</label>
+                                <input type="checkbox" id="star4" name="rate" value="4" onclick="return false" />
+                                <label for="star4" title="text">4 stars</label>
+                                <input type="checkbox" id="star3" name="rate" value="3" onclick="return false" />
+                                <label for="star3" title="text">3 stars</label>
+                                <input type="checkbox" id="star2" name="rate" value="2" onclick="return false" />
+                                <label for="star2" title="text">2 stars</label>
+                                <input type="checkbox" id="star1" name="rate" value="1" onclick="return false" />
+                                <label for="star1" title="text">1 star</label>
+                            </div>
+                           </div> 
+                   </div>  
+               </div>  
+           <div class="details__background" style="background-image:url('{{ asset('/images/047398_r0_1140.jpeg') }}')">  
+           </div>  
 
-{{ restaurant.Name }}
+           </div>  
+        </div>
+</section>
 
+    <section class="rates">
+        <div class="container ">  
+            <div class="rate__header detail--header"><h2>Oceń restaurację</h2></div>
+            <form action="adda" method="POST" class="rates__form">   
+                 <div class="rate">
+                    <input type="radio" id="star5_" name="rate" value="5" required/>
+                    <label for="star5_" title="text">5 stars</label>
+                    <input type="radio" id="star4" name="rate" value="4" required/>
+                    <label for="star4_" title="text">4 stars</label>
+                    <input type="radio" id="star3_" name="rate" value="3" required/>
+                    <label for="star3_" title="text">3 stars</label>
+                    <input type="radio" id="star2_" name="rate" value="2" required/>
+                    <label for="star2_" title="text">2 stars</label>
+                    <input type="radio" id="star1_" name="rate" value="1" required/>
+                    <label for="star1_" title="text">1 star</label>
+                </div>
+                <textarea class="rates__textarea" required ></textarea>
+                <div class="rates__button">
+                    <input class=" btn" type="submit" value="Wyślij">
+                </div>
+
+            </form>  
+        </div>  
+    </section>  
+
+
+<section class="comments">
+    <div class="container ">  
+        <div class="comments__header"><h2>Komentarze</h2></div>
+        <div class=" comments__container ">  
+            <div class=" comment__content">  
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lectus aliquet, ultricies arcu eu, tristique nisl. Donec at molestie metus, ut dignissim elit. Integer laoreet hendrerit augue in varius. Vestibulum quis lacus sit amet magna ornare condimentum iaculis ac lorem. Sed pharetra accumsan arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean et metus blandit, tincidunt arcu in, bibendum tortor.                            {# gwiazdki #}
+            </div>   
+            <div class=" comment__content">  
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lectus aliquet, ultricies arcu eu, tristique nisl. Donec at molestie metus, ut dignissim elit. Integer laoreet hendrerit augue in varius. Vestibulum quis lacus sit amet magna ornare condimentum iaculis ac lorem. Sed pharetra accumsan arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean et metus blandit, tincidunt arcu in, bibendum tortor.                            {# gwiazdki #}
+            </div>  
+             <div class=" comment__content">  
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lectus aliquet, ultricies arcu eu, tristique nisl. Donec at molestie metus, ut dignissim elit. Integer laoreet hendrerit augue in varius. Vestibulum quis lacus sit amet magna ornare condimentum iaculis ac lorem. Sed pharetra accumsan arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean et metus blandit, tincidunt arcu in, bibendum tortor.                            {# gwiazdki #}
+            </div>  
+        </div>  
+    </section>  
+
+
+</div>
 {% endblock %}
