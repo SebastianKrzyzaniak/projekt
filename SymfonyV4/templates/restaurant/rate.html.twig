@@ -1,5 +1,11 @@
 {% extends 'template.html.twig' %}
 {% block title %}Rate{% endblock %}
+
+{% block stylesheets %} 
+ <link rel="stylesheet" type="text/css" href="{{ asset('templates/rate.css') }}" />
+
+{% endblock %}
+
 {% block body %}
-<h1>{{ value }}</h1>
+
 {% endblock %}

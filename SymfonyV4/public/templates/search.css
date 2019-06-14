@@ -1,0 +1,408 @@
+.banner__text {
+  font-size: 2.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 20px 5.88235vw;
+  width: auto;
+  height: auto;
+  font-family: "Cormorant", sans-serif;
+}
+
+.banner__text h2 {
+  font-weight: 600;
+}
+
+.banner__div {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 20.58824vw;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 250px;
+  max-height: 350px;
+  width: 100%;
+}
+
+.form__panel {
+  width: 400px;
+  margin: 0 auto;
+  padding: 15px 0 0;
+  background: #fff;
+  font-size: 16px;
+  font-family: "Cormorant", sans-serif;
+  letter-spacing: -1px;
+}
+
+.form__field {
+  font-size: 15px;
+  display: block;
+  width: 260px;
+  padding: 10px 20px;
+  letter-spacing: 0.5px;
+  color: #696969;
+  font-size: 16px;
+  text-shadow: 0 0 1px silver;
+}
+
+.error_form {
+  margin-top: 10px;
+  color: red;
+  text-align: center;
+}
+
+.passwd .regextext {
+  border-style: solid;
+  border-color: #98c9dc;
+  visibility: hidden;
+  width: 120px;
+  background-color: #ecf2f5;
+  color: #808080;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.passwd .passwdInf:hover ~ .regextext {
+  visibility: visible;
+}
+
+form {
+  margin: 0;
+}
+
+.form__field + input {
+  display: block;
+  width: 360px;
+  margin: 0 auto;
+  padding: 10px 5px;
+  border: 2px solid #eba951;
+  outline: 5px solid #ebebeb;
+  font-size: 22px;
+}
+
+.form__field + input:focus {
+  outline: 5px solid #eba951;
+}
+
+.passwd {
+  position: relative;
+  display: inline-block;
+}
+
+.form__button.btn {
+  background: #eba951;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.form__submit {
+  width: 360px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-top: 20px;
+}
+
+.form__check {
+  padding-left: 5px;
+  margin-bottom: 0;
+  letter-spacing: 0.2px;
+}
+
+.form__check .form__checkbox:checked ~ .form__checkboxMask:after {
+  opacity: 1;
+}
+
+.form__check .-hide {
+  display: none;
+}
+
+.form__checkboxMask {
+  border: 1px solid #dedede;
+  height: 1.375rem;
+  width: 1.375rem;
+  min-width: 18px;
+  margin-right: 5px;
+  min-height: 18px;
+  cursor: pointer;
+  background: #fff;
+  display: block;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  position: relative;
+}
+
+.form__checkboxMask:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 54%;
+  height: 54%;
+  background: #eba951;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  -webkit-transition: opacity .3s ease-out;
+  transition: opacity .3s ease-out;
+}
+
+.form {
+  padding: 50px 0;
+}
+
+.form__fileadd {
+  padding-top: 20px;
+}
+
+/*!
+ * Bootstrap Grid v4.3.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+.-mobileVisible {
+  display: block;
+}
+
+.-mobileHidden {
+  display: none;
+}
+
+.container {
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  max-width: 1700px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-right: 2.9411vw;
+    padding-left: 2.9411vw;
+  }
+  .-mobileVisible {
+    display: none;
+  }
+  .-mobileHidden {
+    display: block;
+  }
+}
+
+@media (min-width: 1700px) {
+  .container {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+.add__baner {
+  background-image: url("../img/search_banner.jpg");
+}
+
+.restaurantsList__header h2 {
+  padding: 2rem 0;
+  font-family: "Cormorant", sans-serif;
+  font-weight: 600;
+}
+
+.restaurantsList .container {
+  height: 100%;
+}
+
+.restaurantsList__search {
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.search--top {
+  height: 50px;
+  background: #fff;
+  color: #000;
+  font-family: "Cormorant", sans-serif;
+}
+
+a.search__btn {
+  border-radius: 0 10px 10px 0;
+  background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #000 !important;
+}
+
+a.search__btn:focus {
+  border: none;
+}
+
+a.search__btn:hover span {
+  border: none;
+}
+
+.search__select .nice-select {
+  font-size: 15px;
+  height: 100%;
+  border: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.search__select .nice-select .current {
+  font-size: 16px;
+}
+
+.search__input {
+  width: 45.3125vw;
+  max-width: 360px;
+  padding: 0 20px;
+  min-width: 145px;
+  border-radius: 10px 0 0 10px;
+  font-size: 16px;
+  border: 0;
+}
+
+.search__input:focus {
+  border: 0;
+}
+
+.search__row {
+  width: 47.05882vw;
+  min-width: 284px;
+  max-width: 800px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: transparent;
+  padding: 30px 0;
+}
+
+.search__border {
+  border: 1px solid #eba951;
+  border-radius: 10px;
+}
+
+.search__icon {
+  width: 15px;
+  margin-left: 10px;
+  height: 15px;
+}
+
+.restaurantsList--header {
+  font-family: "Cormorant", sans-serif;
+  font-size: 2rem;
+  padding: 30px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.restaurant {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.restaurant__more, .restaurant__name, .restaurant__lp {
+  font-family: "Cormorant", sans-serif;
+}
+
+.restaurant__grow {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  font-size: 2rem;
+}
+
+.restaurantsList__restaurant {
+  max-width: 800px;
+  margin: 0 auto;
+  border-bottom: 1px solid #eba951;
+  padding: 15px 0;
+}
+
+.restaurantsList__restaurant:last-child {
+  border-bottom: 1px solid transparent;
+}
+
+.restaurantsList__restaurants {
+  padding-bottom: 30px;
+}
+
+.restaurant__lp {
+  width: 50px;
+  font-size: 2rem;
+}
+
+.restaurant__more {
+  padding: 10px 20px;
+  color: #000 !important;
+  font-size: 1rem;
+  background: #eba951;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1200px) {
+  .search__row {
+    background: rgba(255, 255, 255, 0.7);
+  }
+}
+
+@media (min-width: 768px) {
+  a.search__btn {
+    padding: 0 20px;
+  }
+}
+/*# sourceMappingURL=search.css.map */
