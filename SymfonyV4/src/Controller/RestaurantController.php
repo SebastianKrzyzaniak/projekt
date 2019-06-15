@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Functions\Functions;
 use App\Entity\Restaurant;
 use App\Repository\UserRepository;
+use App\Entity\Comments;
 
 /**
      * @Route("/restaurant", name="restaurant")
@@ -48,7 +49,7 @@ class RestaurantController extends AbstractController
 
         $restaurantName = $_POST['restaurantName'];
         $town = $_POST['town'];
-        $description = "opis"; //$_POST['description'];
+        $description = $_POST['description'];
 
         move_uploaded_file($_FILES['file']['tmp_name'], "images/".$_FILES['file']['name']);
 
@@ -133,10 +134,21 @@ class RestaurantController extends AbstractController
     }
 
      /**
-     * @Route("/rate", name="rate")
+     * @Route("/rate{id}", name="rate")
      */
-    public function rate(Request $request)
+    public function rate($id, Request $request, RestaurantRepository $restaurantRepository)
     {
+        $stars = $_POST["rate"];
+        $comment = $_POST['comment'];
+
+        $restaurant = $restaurantRepository->findOneBy(['id' => $id]);
+        $new_comment = new Comments();
+        $new_comment->setComment($comment);
+        $new_comment->addRestaurantId($restaurant);
+
+        $restaurant->addComment($new_comment);
+        // $restaurant->setGrade($restaurant->getGrade())
+
         //tutaj przyjmujemy oceny, komentarze, zapisujemy i idziemy do detail/{id}
         return $this->redirect("/home");
     }

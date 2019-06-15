@@ -53,6 +53,11 @@ class Restaurant
      */
     private $users;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $grades_counter = 1;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -109,6 +114,8 @@ class Restaurant
     {
         $this->grade = $grade;
 
+        $this->$grades_counter++;
+        
         return $this;
     }
 
@@ -176,6 +183,18 @@ class Restaurant
             $this->users->removeElement($user);
             $user->removeRestaurant($this);
         }
+
+        return $this;
+    }
+
+    public function getGradesCounter(): ?int
+    {
+        return $this->grades_counter;
+    }
+
+    public function setGradesCounter(?int $grades_counter): self
+    {
+        $this->grades_counter = $grades_counter;
 
         return $this;
     }
