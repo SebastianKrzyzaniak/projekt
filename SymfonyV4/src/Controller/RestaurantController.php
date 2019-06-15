@@ -147,7 +147,7 @@ class RestaurantController extends AbstractController
         $new_comment->addRestaurantId($restaurant);
 
         $restaurant->addComment($new_comment);
-        // $restaurant->setGrade($restaurant->getGrade())
+        $restaurant->setGrade((($restaurant->getGrade()*$restaurant->getGradesCounter())+$stars)/($restaurant->getGradesCounter()+1));
 
         //tutaj przyjmujemy oceny, komentarze, zapisujemy i idziemy do detail/{id}
         return $this->redirect("/home");

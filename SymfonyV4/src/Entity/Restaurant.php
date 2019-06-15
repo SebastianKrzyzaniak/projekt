@@ -56,7 +56,7 @@ class Restaurant
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $grades_counter = 1;
+    private $grades_counter;
 
     public function __construct()
     {
