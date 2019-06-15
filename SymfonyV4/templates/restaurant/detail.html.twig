@@ -48,7 +48,7 @@
     <section class="rates">
         <div class="container ">  
             <div class="rate__header detail--header"><h2>Oceń restaurację</h2></div>
-            <form action={{ "rate" ~ restaurant.id}} method="POST" class="rates__form">   
+            <form action={{ "/restaurant/rate/" ~ restaurant.id}} method="POST" class="rates__form">   
                  <div class="rate">
                     <input type="radio" id="star5_" name="rate" value="5" required/>
                     <label for="star5_" title="text">5 stars</label>
@@ -74,16 +74,14 @@
 <section class="comments">
     <div class="container ">  
         <div class="comments__header"><h2>Komentarze</h2></div>
-        <div class=" comments__container ">  
+        <div class=" comments__container "> 
+
+        {% for comment in restaurant.comments %} 
             <div class=" comment__content">  
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lectus aliquet, ultricies arcu eu, tristique nisl. Donec at molestie metus, ut dignissim elit. Integer laoreet hendrerit augue in varius. Vestibulum quis lacus sit amet magna ornare condimentum iaculis ac lorem. Sed pharetra accumsan arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean et metus blandit, tincidunt arcu in, bibendum tortor.                            {# gwiazdki #}
+            {{ comment.comment }}
             </div>   
-            <div class=" comment__content">  
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lectus aliquet, ultricies arcu eu, tristique nisl. Donec at molestie metus, ut dignissim elit. Integer laoreet hendrerit augue in varius. Vestibulum quis lacus sit amet magna ornare condimentum iaculis ac lorem. Sed pharetra accumsan arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean et metus blandit, tincidunt arcu in, bibendum tortor.                            {# gwiazdki #}
-            </div>  
-             <div class=" comment__content">  
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lectus aliquet, ultricies arcu eu, tristique nisl. Donec at molestie metus, ut dignissim elit. Integer laoreet hendrerit augue in varius. Vestibulum quis lacus sit amet magna ornare condimentum iaculis ac lorem. Sed pharetra accumsan arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean et metus blandit, tincidunt arcu in, bibendum tortor.                            {# gwiazdki #}
-            </div>  
+        {% endfor %}
+        
         </div>  
     </section>  
 

@@ -134,7 +134,7 @@ class RestaurantController extends AbstractController
     }
 
      /**
-     * @Route("/rate{id}", name="rate")
+     * @Route("/rate/{id}", name="rate")
      */
     public function rate($id, Request $request, RestaurantRepository $restaurantRepository)
     {
@@ -145,6 +145,10 @@ class RestaurantController extends AbstractController
         $new_comment = new Comments();
         $new_comment->setComment($comment);
         $new_comment->addRestaurantId($restaurant);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($new_comment);
+        $entityManager->flush();
 
         $restaurant->addComment($new_comment);
         $restaurant->setGrade((($restaurant->getGrade()*$restaurant->getGradesCounter())+$stars)/($restaurant->getGradesCounter()+1));
