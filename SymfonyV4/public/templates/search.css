@@ -229,6 +229,7 @@ form {
   padding: 2rem 0;
   font-family: "Cormorant", sans-serif;
   font-weight: 600;
+  text-align: center;
 }
 
 .restaurantsList .container {
