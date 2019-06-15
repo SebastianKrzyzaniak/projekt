@@ -25,10 +25,12 @@
                             <div class="rate rate-static">
                                 {% set num = restaurant.grade|round %}
                                 
+                                {% if ((5-num) != 0) %}
                                 {% for grade in range(1, (5 - num)) %}
                                 <input type="checkbox" id={{ "star" ~ (loop.index + num) }} name="rate" value={{ (loop.index + num) }} onclick="return false" />
                                 <label for={{ "star" ~ (loop.index + num) }} title="text">{{ (loop.index + num) }} stars</label>
                                 {% endfor %}
+                                {% endif %}                                
 
                                 {% for grade in range(1, restaurant.grade|round) %}
                                 <input type="checkbox" id={{ "star" ~ loop.index }} name="rate" value={{ loop.index }} checked onclick="return false" />
