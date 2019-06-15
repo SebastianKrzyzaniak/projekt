@@ -30,9 +30,10 @@
     color: #000;
     font-family: $font-primary;
 }
-a.search__btn {
+label.search__btn {
     border-radius:  0 10px 10px 0;
     background: #fff;
+    margin-bottom: 0;
     display: flex;
     justify-content: center;
     padding: 0 10px;
@@ -116,6 +117,9 @@ font-family: $font-primary;
     font-size: 2rem;
 
 }
+.-hide {
+    display: none;
+}
 .restaurantsList__restaurant {
     max-width: 800px;
     margin: 0 auto;
@@ -152,7 +156,7 @@ font-family: $font-primary;
 }
 }
 @media (min-width: $mamabear-min) {
-    a.search__btn {
+    label.search__btn {
         padding: 0 20px;
     }
 }

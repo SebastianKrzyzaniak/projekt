@@ -158,3 +158,13 @@
 .form__fileadd {
   padding-top: 20px;
 }
+.form__textarea {
+  font-family: $font-primary;
+  width: 360px;
+  margin: 0 auto;
+  outline: 5px solid #ebebeb;
+  height: 130px;
+  display: block;
+  border: 2px solid $color-primary;
+  padding: 10px 5px;
+}
