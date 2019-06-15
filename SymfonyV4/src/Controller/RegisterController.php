@@ -4,11 +4,12 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\UzytkownicyRepository;
-use App\Entity\Uzytkownicy;
+use App\Repository\UserRepository;
+use App\Entity\User;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Config\Definition\Exception\Exception;
+use App\Repository\RestaurantRepository;
 
 /**
      * @Route("/register", name="register")
@@ -27,7 +28,7 @@ class RegisterController extends AbstractController
     /**
      * @Route("/create", name="create"), methods={"POST"}
      */
-    public function create(Request $request, UzytkownicyRepository $usersRep) : Response
+    public function create(Request $request, UserRepository $userRepository, RestaurantRepository $restaurantRepository) : Response
     { 
         //TODO: zrobic regexy na textboxy w php- html mozna zmienic
 
@@ -35,42 +36,37 @@ class RegisterController extends AbstractController
         $password =  password_hash($_POST['password'], PASSWORD_BCRYPT);    //hashowanie hasła
         $town = $_POST['town'];
 
-        if($usersRep->findOneBy(array('username' => $username)) != null)    //jeżeli uzytkownik o takim username juz istnieje
+        if($userRepository->findOneBy(array('username' => $username)) != null)    //jeżeli uzytkownik o takim username juz istnieje
         {
             return $this->render('register/register.html.twig',[
                 'error' => 'Użytkownik o takiej nazwie już istnieje'
             ]);
         }
 
-        $uzytkownicy = new Uzytkownicy();
-        $uzytkownicy->setUsername($username);
-        $uzytkownicy->setPassword($password);
-        $uzytkownicy->setTown($town);
+        $restaurantsInThisTown = $restaurantRepository->findBy(['town' => $town]);
+        $user = new User();
+        $user->setUsername($username);
+        $user->setPassword($password);
+        $user->setTown($town);
+        foreach($restaurantsInThisTown as $restaurant)
+        {
+            $user->addRestaurant($restaurant);
+        }
         $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($uzytkownicy);
+        $entityManager->persist($user);
         $entityManager->flush();
 
         return $this->redirect('../login');
     }
 
-     /**
-     * @Route("/userslst", name="userslst")
-     */
-    public function userslst(UzytkownicyRepository $uzytkownicyRepository)
-    {
-        $user = $uzytkownicyRepository->findAll();
-        return $this->render('register/UsersLst.html.twig', [
-            'user' => $user
-        ]);
-    }
-    
-     /**
-     * @Route("/show/{id}", name="show")
-     */
-    public function show(Uzytkownicy $user)
-    {
-        return $this->render('register/show.html.twig', [
-            'user' => $user
-        ]);
-    }
+    //  /**
+    //  * @Route("/userslst", name="userslst")
+    //  */
+    // public function userslst(UserRepository $userRepository)
+    // {
+    //     $user = $userRepository->findAll();
+    //     return $this->render('register/UsersLst.html.twig', [
+    //         'user' => $user
+    //     ]);
+    // }
 }

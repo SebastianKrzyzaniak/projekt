@@ -43,9 +43,20 @@ class Restaurant
      */
     private $img_path;
 
+      /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $description;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="restaurants")
+     */
+    private $users;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -73,6 +84,18 @@ class Restaurant
     public function setTown(string $town): self
     {
         $this->town = $town;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->town;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }
@@ -125,6 +148,34 @@ class Restaurant
     public function setImgPath(?string $img_path): self
     {
         $this->img_path = $img_path;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addRestaurant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->contains($user)) {
+            $this->users->removeElement($user);
+            $user->removeRestaurant($this);
+        }
 
         return $this;
     }

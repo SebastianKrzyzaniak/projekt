@@ -2,12 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\Uzytkownicy;
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use App\Repository\UzytkownicyRepository;
+use App\Repository\UserRepository;
 
  /**
      * @Route("/login", name="login.")
@@ -31,14 +31,14 @@ class LoginController extends AbstractController
     /**
      * @Route("/login", name="Logowanie")
      */
-    public function Logowanie(Request $request, UzytkownicyRepository $usersRep) : Response
+    public function Logowanie(Request $request, UserRepository $userRepository) : Response
     {
         //TODO: zrobic regexy na textboxy w php- html mozna zmienic (chociaz tutaj to jeden kit)
 
         $username = $_POST['username'];
         $password = $_POST['password'];
         
-        $userFromDb  = $usersRep->findOneBy(array('username' => $username));
+        $userFromDb  = $userRepository->findOneBy(array('username' => $username));
 
         if($userFromDb != null)
         { 

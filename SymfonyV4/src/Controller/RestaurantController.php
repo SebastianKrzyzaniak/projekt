@@ -8,6 +8,7 @@ use App\Repository\RestaurantRepository;
 use Symfony\Component\HttpFoundation\Request;
 use App\Functions\Functions;
 use App\Entity\Restaurant;
+use App\Repository\UserRepository;
 
 /**
      * @Route("/restaurant", name="restaurant")
@@ -37,7 +38,7 @@ class RestaurantController extends AbstractController
      /**
      * @Route("/add", name="add")
      */
-    public function add(Request $request)
+    public function add(Request $request, UserRepository $userRepository)
     {
         if(!isset($_POST['restaurantName']) ){
         return $this->render('restaurant/add.html.twig', [
@@ -47,6 +48,7 @@ class RestaurantController extends AbstractController
 
         $restaurantName = $_POST['restaurantName'];
         $town = $_POST['town'];
+        $description = "opis"; //$_POST['description'];
 
         move_uploaded_file($_FILES['file']['tmp_name'], "images/".$_FILES['file']['name']);
 
@@ -63,10 +65,17 @@ class RestaurantController extends AbstractController
             ]);
         }
 
+
+        $userInThisTown = $userRepository->findBy(['town' => $town]);
         $restaurant = new Restaurant();
         $restaurant->setName($restaurantName);
         $restaurant->setTown($town);
         $restaurant->setImgPath($result_image_path);
+        $restaurant->setDescription($description);
+        foreach($userInThisTown as $user)
+        {
+            $restaurant->addUser($user);
+        }
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($restaurant);
         $entityManager->flush();
