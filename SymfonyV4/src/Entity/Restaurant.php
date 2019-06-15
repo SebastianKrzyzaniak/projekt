@@ -114,7 +114,7 @@ class Restaurant
     {
         $this->grade = $grade;
 
-        $this->grades_counter++;
+        $this->setGradesCounter($this->getGradesCounter()+1);
         
         return $this;
     }
