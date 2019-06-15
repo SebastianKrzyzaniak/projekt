@@ -96,7 +96,6 @@ class User
     {
         if (!$this->restaurants->contains($restaurant)) {
             $this->restaurants[] = $restaurant;
-            // $restaurant->addUser($this);
         }
 
         return $this;

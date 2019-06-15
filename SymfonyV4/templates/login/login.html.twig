@@ -7,6 +7,7 @@
 {% endblock %}
 {% block body %}
  <section class="login">
+    {% if logged == null %}
 
     <div class="login__baner banner__div row">
             <div class="login__h2 banner__text"><h2>Zaloguj się</h2></div>
@@ -31,5 +32,25 @@
             </form>
         </div>
     </div>
+
+    {% else %}
+    <div class="login__baner banner__div row">
+            <div class="login__h2 banner__text"><h2><a {#id="logout" onmouseover="mouseover()" onmouseout="mouseout()"#} href="/home/logout">Wyloguj się</a></h2></div>
+    </div>
+    {% endif %}
 </section>
+{% endblock %}
+
+ {% block javascripts %}
+ {# <script> 
+    function mouseover() 
+    { 
+        document.getElementById("logout").style.color = "#eba951"; 
+    } 
+                    
+    function mouseout() 
+    { 
+        document.getElementById("logout").style.color = "#000000"; 
+    } 
+  </script>  #}
 {% endblock %}
