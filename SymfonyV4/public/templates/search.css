@@ -179,6 +179,17 @@ form {
   padding-top: 20px;
 }
 
+.form__textarea {
+  font-family: "Cormorant", sans-serif;
+  width: 360px;
+  margin: 0 auto;
+  outline: 5px solid #ebebeb;
+  height: 130px;
+  display: block;
+  border: 2px solid #eba951;
+  padding: 10px 5px;
+}
+
 /*!
  * Bootstrap Grid v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -250,9 +261,10 @@ form {
   font-family: "Cormorant", sans-serif;
 }
 
-a.search__btn {
+label.search__btn {
   border-radius: 0 10px 10px 0;
   background: #fff;
+  margin-bottom: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -266,11 +278,11 @@ a.search__btn {
   color: #000 !important;
 }
 
-a.search__btn:focus {
+label.search__btn:focus {
   border: none;
 }
 
-a.search__btn:hover span {
+label.search__btn:hover span {
   border: none;
 }
 
@@ -367,6 +379,10 @@ a.search__btn:hover span {
   font-size: 2rem;
 }
 
+.-hide {
+  display: none;
+}
+
 .restaurantsList__restaurant {
   max-width: 800px;
   margin: 0 auto;
@@ -402,7 +418,7 @@ a.search__btn:hover span {
 }
 
 @media (min-width: 768px) {
-  a.search__btn {
+  label.search__btn {
     padding: 0 20px;
   }
 }

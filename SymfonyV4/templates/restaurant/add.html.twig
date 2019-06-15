@@ -22,6 +22,8 @@
 
                     <label class=" form__fileadd" for="file">
                     </label>
+                    <textarea name="description" minlength="10" class="form__textarea" required ></textarea>
+
                     <input class="form__field add--field form-control-file" type="file" id="file" name="file">
 
                     <div class="error_form">{% if error is defined %}{{ error }} {% endif %}</div>
