@@ -39,62 +39,28 @@
         <div class="container">
 
         <div class="restaurantsList__header">
-            {# restauracje w twojej okolicy #}
             <div class="restaurantList__yourTown restaurantsList--header">
-                <span>Lista restauracji {% if lstRestaurantsInfo is defined %} {{ lstRestaurantsInfo }} {% else %} z Twojego miasta: {% endif %}</span>
+                <span>{{ lstRestaurantsInfo }}</span>
             </div>
-            {# restauracje szukane po nazwie #}
-            {# <div class="restaurantsList__name restaurantsList--header">
-                <span>Szukana restauracja: Chilli</span>
-            </div> #}
-            {# restauracje szukane po nazwie miasta #}
-            {# <div class="restaurantsList__yourTown restaurantsList--header">
-                <span>Szukane miasto: Poznań.</span>
-            </div> #}
         </div>
 
         <div class="restaurantsList__restaurants">
-
-        {# jedna restauracja #}
-            <div class="restaurantsList__restaurant restaurant">
+        {% if restaurants != null %}
+        {% for restaurant in  restaurants %}
+           <div class="restaurantsList__restaurant restaurant">
              <div class="restaurant__lp">
-                    <span>1</span>
+                    <span>{{ loop.index }}</span>
                 </div>
                 <div class="grow restaurant__grow">
-                    <h3 class="restaurant__name">Chilli</h3>
+                    <h3 class="restaurant__name">{{ restaurant.name }}</h3>
                     {# gwiazdki #}
                 </div>
-                <a href="/PODAC ID" class=" restaurant__more">Więcej</a>
+                <a href={{"detail/" ~ restaurant.id }} class=" restaurant__more">Więcej</a>
             </div>
-
-            {# druga restauracja #}
-              <div class="restaurantsList__restaurant restaurant">
-             <div class="restaurant__lp">
-                    <span>2</span>
-                </div>
-                <div class="grow restaurant__grow">
-                    <h3 class="restaurant__name">Americana</h3>
-                    {# gwiazdki #}
-                </div>
-                <a href="/PODAC ID" class=" restaurant__more">Więcej</a>
-            </div>
-
-            {# trzecia  #}
-
-              <div class="restaurantsList__restaurant restaurant">
-             <div class="restaurant__lp">
-                    <span>3</span>
-                </div>
-                <div class="grow restaurant__grow">
-                    <h3 class="restaurant__name">Manekin</h3>
-                    {# gwiazdki #}
-                </div>
-                <a href="/PODAC ID" class=" restaurant__more">Więcej</a>
-            </div>
-
-
-
-
+        {% endfor %}
+        {% else %}
+            <h1>Nie znaleziono żadnej restauracji</h1>
+        {% endif %}
         </div>
 
     </div>

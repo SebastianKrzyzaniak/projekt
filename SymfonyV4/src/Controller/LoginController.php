@@ -62,9 +62,10 @@ class LoginController extends AbstractController
         $session->set('logged',array(
             'id' => $userFromDb->getId(),
             'username' => $userFromDb->getUsername(),
-            'town' => $userFromDb->getTown()
+            'town' => $userFromDb->getTown(),
+            'restaurants' => $userFromDb->getRestaurants()
         ));
-        return $this->redirect('http://localhost:8000/home');
+        return $this->redirect('/home');
     }
     
 }

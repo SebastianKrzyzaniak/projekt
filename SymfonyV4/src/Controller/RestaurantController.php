@@ -28,7 +28,7 @@ class RestaurantController extends AbstractController
      */
     public function detail($id, RestaurantRepository $restaurantRepository )
     {
-         $restaurant = $restaurantRepository->findOneBy(['id' => $id]);
+        $restaurant = $restaurantRepository->findOneBy(['id' => $id]);
 
         return $this->render('restaurant/detail.html.twig', [
             'restaurant' => $restaurant
@@ -88,24 +88,46 @@ class RestaurantController extends AbstractController
      /**
      * @Route("/search", name="search")
      */
-    public function search(Request $request)
+    public function search(Request $request, UserRepository $userRepository, RestaurantRepository $restaurantRepository)
     {
+        $sessionUserId = $this->get('session')->get('logged')['id'];
+        $user = $userRepository->findOneBy(['id' => $sessionUserId]);
+
+        if($user == null)
+        {
+            $restaurants = $restaurantRepository->findBy(array(), null, 5);
+            return $this->render('restaurant/search.html.twig',[
+                'lstRestaurantsInfo' => 'Szukaj ~ Oceniaj ~ Komentuj',
+                'restaurants' => $restaurants
+            ]);
+        }
+
         if(!isset($_POST['select']))
         {
-            return $this->render('restaurant/search.html.twig');
+            $restaurants = $user->getRestaurants();
+            return $this->render('restaurant/search.html.twig',[
+                'lstRestaurantsInfo' => 'Lista restauracji z Twojej okolicy:',
+                'restaurants' => $restaurants
+            ]);
         }
 
         if($_POST['select'] == "name")
         {
+            $restaurants = $restaurantRepository->findBy(['name' => $_POST['phrase']]);
+
             return $this->render('restaurant/search.html.twig',[
-                'lstRestaurantsInfo' => 'o nazwie "'.$_POST['phrase'].'"'
+                'lstRestaurantsInfo' => 'Lista restauracji o nazwie "'.$_POST['phrase'].'":',
+                'restaurants' => $restaurants
             ]);
         }
 
         if($_POST['select'] == "town")
         {
+            $restaurants = $restaurantRepository->findBy(['town' => $_POST['phrase']]);            
+
             return $this->render('restaurant/search.html.twig',[
-                'lstRestaurantsInfo' => 'z miasta '.$_POST['phrase']
+                'lstRestaurantsInfo' => 'Lista restauracji z miasta '.$_POST['phrase'].":",
+                'restaurants' => $restaurants
             ]);
         }
     }
@@ -116,6 +138,6 @@ class RestaurantController extends AbstractController
     public function rate(Request $request)
     {
         //tutaj przyjmujemy oceny, komentarze, zapisujemy i idziemy do detail/{id}
-        return $this->redirect("../home");
+        return $this->redirect("/home");
     }
 }

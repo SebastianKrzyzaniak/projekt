@@ -90,7 +90,7 @@ class Restaurant
 
     public function getDescription(): ?string
     {
-        return $this->town;
+        return $this->description;
     }
 
     public function setDescription(string $description): self

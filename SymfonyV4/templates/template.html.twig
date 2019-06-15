@@ -23,7 +23,7 @@
                 <div class="header__info">
                 {# // odnosnik do widoku register czy coś  #}
                 {% if logged == null %}
-                    <a class="header__register" href="../login">
+                    <a class="header__register" href="/login">
                         <p class="-mobileHidden">Logowanie</p>
                         <img class="header__registerIcon -mobileVisible" src="{{ asset('img/icon_02.svg') }}" alt="Account">
                     </a>
@@ -32,7 +32,7 @@
                     <a class="header__register" href="#">
                         <p class="">Zalogowany jako: {{ logged['username'] }}</p>
                     </a>
-                    <a class="header__logout" href="../home/logout">
+                    <a class="header__logout" href="/home/logout">
                         <p class="-mobileHidden">Wyloguj się</p>
                         <img class="header__logoutIcon -mobileVisible" src="{{ asset('img/close1.png') }}" alt="Account">
                     </a>
