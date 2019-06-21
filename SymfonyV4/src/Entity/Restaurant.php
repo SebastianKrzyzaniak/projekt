@@ -29,9 +29,9 @@ class Restaurant
     private $town;
 
     /**
-     * @ORM\Column(type="decimal", precision=3, scale=2, nullable=true)
+     * @ORM\Column(type="decimal", precision=3, scale=2, nullable=true, options={"default" : 0})
      */
-    private $grade;
+    private $grade = 0;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Comments", mappedBy="restaurant_id")

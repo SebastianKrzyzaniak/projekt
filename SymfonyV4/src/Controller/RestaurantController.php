@@ -81,7 +81,7 @@ class RestaurantController extends AbstractController
         $entityManager->persist($restaurant);
         $entityManager->flush();
 
-        return $this->redirectToRoute('restaurantrate', [
+        return $this->redirectToRoute('restaurantdetail', [
             'id' => $restaurant->getId()
             ]);
     }
