@@ -94,7 +94,15 @@ class RestaurantController extends AbstractController
         $sessionUserId = $this->get('session')->get('logged')['id'];
         $user = $userRepository->findOneBy(['id' => $sessionUserId]);
 
-        if($user == null)
+        if(!isset($_POST['select']) and $user != null)
+        {
+            $restaurants = $user->getRestaurants();
+            return $this->render('restaurant/search.html.twig',[
+                'lstRestaurantsInfo' => 'Lista restauracji z Twojej okolicy:',
+                'restaurants' => $restaurants
+            ]);
+        }
+        elseif(!isset($_POST['select']) and $user == null)
         {
             $restaurants = $restaurantRepository->findBy(array(), null, 5);
             return $this->render('restaurant/search.html.twig',[
@@ -103,14 +111,6 @@ class RestaurantController extends AbstractController
             ]);
         }
 
-        if(!isset($_POST['select']))
-        {
-            $restaurants = $user->getRestaurants();
-            return $this->render('restaurant/search.html.twig',[
-                'lstRestaurantsInfo' => 'Lista restauracji z Twojej okolicy:',
-                'restaurants' => $restaurants
-            ]);
-        }
 
         if($_POST['select'] == "name")
         {
