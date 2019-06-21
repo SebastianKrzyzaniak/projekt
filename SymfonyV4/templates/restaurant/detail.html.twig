@@ -23,24 +23,29 @@
                     
                            <div class=" details__buttons">  
                             <div class="rate rate-static">
-                                {% set num = restaurant.grade|round %}
-                                
-                                {% if ((5-num) != 0) %}
-                                {% for grade in range(1, (5 - num)) %}
-                                <input type="checkbox" id={{ "star" ~ (loop.index + num) }} name="rate" value={{ (loop.index + num) }} onclick="return false" />
-                                <label for={{ "star" ~ (loop.index + num) }} title="text">{{ (loop.index + num) }} stars</label>
+                                {% set restaurantGradeRound = restaurant.grade|round %}
+                                {% if ((5-restaurantGradeRound) != 0) %}
+                                {% for grade in range(1, (5 - restaurantGradeRound)) %}
+                                <input type="checkbox" id={{ "star" ~ (loop.index + restaurantGradeRound) }} name="rate" value={{ (loop.index + restaurantGradeRound) }} onclick="return false" />
+                                <label for={{ "star" ~ (loop.index + restaurantGradeRound) }} title="text">{{ (loop.index + restaurantGradeRound) }} stars</label>
                                 {% endfor %}
                                 {% endif %}                                
 
-                                {% for grade in range(1, restaurant.grade|round) %}
+                                {% if (restaurantGradeRound != 0) %}
+                                {% for grade in range(1, restaurantGradeRound) %}
                                 <input type="checkbox" id={{ "star" ~ loop.index }} name="rate" value={{ loop.index }} checked onclick="return false" />
                                 <label for={{ "star" ~ loop.index }} title="text">{{ loop.index }} stars</label>
                                 {% endfor %}
+                                {% endif %}
+                                <div> {{ "(" ~ restaurant.grade ~ ")" }} </div>
+                                 <div> {{ "(" ~ restaurant.town ~ ")" }} </div>
+
                             </div>
                            </div> 
                    </div>  
                </div>  
-           <div class="details__background" style="background-image:url('{{ asset('/images/047398_r0_1140.jpeg') }}')">  
+               {% set imagePath = "background-image:url('" ~ asset(restaurant.ImgPath) ~ "')"  %}
+           <div class="details__background" style={{ imagePath }}>  
            </div>  
 
            </div>  
