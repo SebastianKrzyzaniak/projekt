@@ -148,7 +148,12 @@ $(document).ready(function(){
             $([document.documentElement, document.body]).animate({
             scrollTop: $("#comments__container div:last-child").offset().top 
             }, 2000);
-            $("#new").each(function( index, element ) {element.css("background-color","rgba(255, 193, 7, 0.11)")});
+
+            $("#comments__container div:last-child").css("background-color","rgba(255, 193, 7, 0.11)");
+           // $("#new").animate({
+             //   backgroundColor: [parseInt(e[1], 16), parseInt(e[2], 16), parseInt(e[3], 16)]
+            // }, 2000);
+           // $("#new").each(function( index, element ) {element.css("background-color","rgba(255, 193, 7, 0.11)")});
         });
 
     }
