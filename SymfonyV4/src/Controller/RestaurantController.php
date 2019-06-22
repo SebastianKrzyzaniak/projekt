@@ -102,7 +102,7 @@ class RestaurantController extends AbstractController
                 'restaurants' => $restaurants
             ]);
         }
-        elseif(!isset($_POST['select']) and $user == null)
+        elseif(!isset($_POST['select']) and$user == null)
         {
             $restaurants = $restaurantRepository->findBy(array(), null, 5);
             return $this->render('restaurant/search.html.twig',[
@@ -114,7 +114,7 @@ class RestaurantController extends AbstractController
 
         if($_POST['select'] == "name")
         {
-            $restaurants = $restaurantRepository->findBy(['name' => $_POST['phrase']]);
+            $restaurants = $restaurantRepository->findBy(['name_upperCase' => strtoupper($_POST['phrase'])]);
 
             return $this->render('restaurant/search.html.twig',[
                 'lstRestaurantsInfo' => 'Lista restauracji o nazwie "'.$_POST['phrase'].'":',
@@ -124,7 +124,7 @@ class RestaurantController extends AbstractController
 
         if($_POST['select'] == "town")
         {
-            $restaurants = $restaurantRepository->findBy(['town' => $_POST['phrase']]);            
+            $restaurants = $restaurantRepository->findBy(['town' => strtoupper($_POST['phrase'])]);            
 
             return $this->render('restaurant/search.html.twig',[
                 'lstRestaurantsInfo' => 'Lista restauracji z miasta '.$_POST['phrase'].":",

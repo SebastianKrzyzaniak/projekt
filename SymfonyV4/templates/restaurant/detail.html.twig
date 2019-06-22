@@ -3,8 +3,27 @@
 {% block title %}{{ restaurant.Name }}{% endblock %}
 
 {% block stylesheets %} 
- <link rel="stylesheet" type="text/css" href="{{ asset('templates/details.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('templates/details.css') }}" />
 
+<style>
+.inf:hover ~ .regextext {
+    visibility: visible; 
+}
+
+.regextext{
+    border-style: solid;
+    border-color: #98c9dc;
+    visibility: hidden;
+    width: 120px;
+    background-color: #ecf2f5;
+    color: #808080;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+} 
+</style>
 {% endblock %}
 
 {% block body %}
@@ -55,25 +74,28 @@
     <section class="rates">
         <div class="container ">  
             <div class="rate__header detail--header"><h2>Oceń restaurację</h2></div>
-            <form action={{ "/restaurant/rate/" ~ restaurant.id}} method="POST" class="rates__form">   
+           {# <form action={{ "/restaurant/rate/" ~ restaurant.id }} method="POST" class="rates__form">   #}
+             <div class="rates__form">
                  <div class="rate">
                     <input type="radio" id="star5_" name="rate" value="5" required/>
-                    <label for="star5_" title="text">5 stars</label>
+                    <label for="star5_" title="text" onclick="setStars(5)" >5 stars</label>
                     <input type="radio" id="star4_" name="rate" value="4" required/>
-                    <label for="star4_" title="text">4 stars</label>
+                    <label for="star4_" title="text" onclick="setStars(4)">4 stars</label>
                     <input type="radio" id="star3_" name="rate" value="3" required/>
-                    <label for="star3_" title="text">3 stars</label>
+                    <label for="star3_" title="text" onclick="setStars(3)">3 stars</label>
                     <input type="radio" id="star2_" name="rate" value="2" required/>
-                    <label for="star2_" title="text">2 stars</label>
+                    <label for="star2_" title="text" onclick="setStars(2)">2 stars</label>
                     <input type="radio" id="star1_" name="rate" value="1" required/>
-                    <label for="star1_" title="text">1 star</label>
+                    <label for="star1_" title="text" onclick="setStars(1)">1 star</label>
                 </div>
-                <textarea minlength="10" class="rates__textarea" name="comment" required ></textarea>
+                    <textarea onclick="writing()" minlength="10" class="rates__textarea" name="comment" required ></textarea>
+                <span class="inf" style="font-size:14px;">&#9432</span><span class="regextext">Min. 10 chars</span>
+                    <div class="error_form">{% if error is defined %}{{ error }} {% endif %}</div>   
                 <div class="rates__button">
-                    <input class=" btn" type="submit" value="Wyślij">
+                    <input id="btn" class=" btn" type="submit" value="Wyślij">
                 </div>
-                <div class="error_form">{% if error is defined %}{{ error }} {% endif %}</div>   
-            </form>  
+             </div>
+            {# </form> #}
         </div>  
     </section>  
 
@@ -81,7 +103,7 @@
 <section class="comments">
     <div class="container ">  
         <div class="comments__header"><h2>Komentarze</h2></div>
-        <div class=" comments__container "> 
+        <div id="comments__container" class=" comments__container "> 
 
         {% for comment in restaurant.comments %} 
             <div class=" comment__content">  
@@ -92,6 +114,49 @@
         </div>  
     </section>  
 
-
 </div>
+{% endblock %}
+
+
+{% set route = "/restaurant/rate/" ~ restaurant.id %}
+{% block javascripts %}
+<script>
+var stars = 0;
+
+function setStars(star)
+{
+    stars = star;
+}
+
+function writing()
+{
+    $(".regextext").css("visibility", "hidden");
+}
+
+$(document).ready(function(){
+  $("input[type='submit']").click(function(){
+      if($(".rates__textarea").val().length >= 10){
+        $.post("{{ route }}",
+        {
+        comment: $(".rates__textarea").val(),
+        rate: stars
+        },
+        function(){
+        $("#comments__container").append(
+            '<div id="new" class=" comment__content">'.concat($(".rates__textarea").val(), "</div>"));
+            
+            $([document.documentElement, document.body]).animate({
+            scrollTop: $("#comments__container div:last-child").offset().top 
+            }, 2000);
+            $("#new").each(function( index, element ) {element.css("background-color","rgba(255, 193, 7, 0.11)")});
+        });
+
+    }
+    else
+    {
+        $(".regextext").css("visibility", "visible");
+    }
+  });
+});
+</script>
 {% endblock %}

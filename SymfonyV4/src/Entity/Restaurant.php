@@ -58,6 +58,16 @@ class Restaurant
      */
     private $grades_counter;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name_upperCase;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $town_upperCase;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -77,6 +87,7 @@ class Restaurant
     public function setName(string $name): self
     {
         $this->name = $name;
+        $this->setNameUpperCase(strtoupper($name));
 
         return $this;
     }
@@ -89,6 +100,7 @@ class Restaurant
     public function setTown(string $town): self
     {
         $this->town = $town;
+        $this->setTownUpperCase(strtoupper($town));
 
         return $this;
     }
@@ -195,6 +207,30 @@ class Restaurant
     public function setGradesCounter(?int $grades_counter): self
     {
         $this->grades_counter = $grades_counter;
+
+        return $this;
+    }
+
+    public function getNameUpperCase(): ?string
+    {
+        return $this->name_upperCase;
+    }
+
+    public function setNameUpperCase(string $name_upperCase): self
+    {
+        $this->name_upperCase = $name_upperCase;
+
+        return $this;
+    }
+
+    public function getTownUpperCase(): ?string
+    {
+        return $this->town_upperCase;
+    }
+
+    public function setTownUpperCase(string $town_upperCase): self
+    {
+        $this->town_upperCase = $town_upperCase;
 
         return $this;
     }
